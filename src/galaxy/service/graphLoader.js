@@ -169,7 +169,7 @@ function loadGraph(name, progress) {
 
   function setLabels(data) {
     labels = data;
-    appEvents.labelsDownloaded.fire(labels);
+    appEvents.labelsDownloaded.fire(data);
   }
 
   function reportProgress(name, file) {

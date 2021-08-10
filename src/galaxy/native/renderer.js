@@ -25,9 +25,7 @@ import createLineView from './lineView.js';
 import appConfig from './appConfig.js';
 
 export default sceneRenderer;
-
-var defaultNodeColor = 0xffffffff;
-
+var nodeCommunity = [];
 var highlightNodeColor = 0xff0000ff;
 
 function sceneRenderer(container) {
@@ -36,7 +34,21 @@ function sceneRenderer(container) {
   var lineView, links, lineViewNeedsUpdate;
   var queryUpdateId = setInterval(updateQuery, 200);
 
+  var communityColorMap = new Map();
+  var colorMap = new Map([
+    ['5901', 0x00f7ffff],
+    ['1217', 0x1a14ffff],
+    ['2272', 0x6e30ffff],
+    ['10476', 0x1189ffff],
+    ['3063', 0xde38ffff],
+    ['26766', 0xfff10cff],
+    ['7298', 0xff3254ff],
+    ['1314', 0x4dea00ff],
+  ]);
+  var defaultColor = 0xffffffff;
+
   appEvents.positionsDownloaded.on(setPositions);
+  appEvents.labelsDownloaded.on(setLabels);
   appEvents.linksDownloaded.on(setLinks);
   appEvents.toggleSteering.on(toggleSteering);
   appEvents.focusOnNode.on(focusOnNode);
@@ -129,6 +141,37 @@ function sceneRenderer(container) {
     hitTest.on('click', handleClick);
     hitTest.on('dblclick', handleDblClick);
     hitTest.on('hitTestReady', adjustMovementSpeed);
+  }
+
+  function getColor(c) {
+    return colorMap.has(c) ? colorMap.get(c) : defaultColor;
+  }
+
+  function setLabels(labels) {
+    if (!renderer) return;
+    // set color
+    var view = renderer.getParticleView();
+    var colors = view.colors();
+    nodeCommunity = [];
+    for (var i = 0; i < labels.length; i++) {
+      if (!communityColorMap.has(labels[i].c)) {
+        var c = getColor(labels[i].c);
+        communityColorMap.set(labels[i].c, c);
+      }
+      colorNode(i * 3, colors, communityColorMap.get(labels[i].c));
+      nodeCommunity.push(labels[i].c);
+    }
+    view.colors(colors);
+    // set size
+    var sizes = view.sizes();
+    var max = parseFloat(labels[0].pg);
+    for (var i = 1; i < labels.length; i++) {
+      if (max < parseFloat(labels[i].pg)) max = parseFloat(labels[i].pg);
+    }
+    for (var i = 0; i < sizes.length; ++i) {
+      sizes[i] = (180 * parseFloat(labels[i].pg) / max) + 8;
+    }
+    view.sizes(sizes);
   }
 
   function adjustMovementSpeed(tree) {
@@ -254,8 +297,8 @@ function sceneRenderer(container) {
     var colors = view.colors();
     var sizes = view.sizes();
 
-    if (lastHighlight !== undefined) {
-      colorNode(lastHighlight, colors, defaultNodeColor);
+    if (lastHighlight !== undefined && nodeCommunity) {
+      colorNode(lastHighlight, colors, communityColorMap.get(nodeCommunity[lastHighlight/3]));
       sizes[lastHighlight/3] = lastHighlightSize;
     }
 

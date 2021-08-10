@@ -6,6 +6,7 @@ export default graph;
 
 function graph(rawGraphLoaderData) {
   var {labels, outLinks, inLinks, positions} = rawGraphLoaderData;
+  labels = labels.map(l => l.n);
   var empty = [];
 
   var api = {
