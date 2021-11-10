@@ -1,8 +1,8 @@
 // development config
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require("webpack");
+var path = require("path");
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Where to listen for the dev server
 var port = process.env.PORT || 8080;
@@ -18,7 +18,7 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://0.0.0.0:" + port,
     "webpack/hot/only-dev-server",
-    "./src/main"
+    "./src/main",
   ],
 
   // This will not actually create a bundle.js file in ./build. It is used
@@ -26,22 +26,30 @@ module.exports = {
   output: {
     path: __dirname + "/build/",
     filename: "app.js",
-    publicPath: "/"
+    publicPath: "/",
   },
 
   // Transform source code using Babel and React Hot Loader
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      include: path.join(__dirname, "src"),
-      loaders: ["react-hot", "babel-loader"]
-    }, {
-      test: /\.less$/,
-      loader: ExtractTextPlugin.extract('css!less')
-    }, {
-      test: /\.(woff|woff2|eot|ttf|svg)$/,
-      loader: 'url-loader?limit=1&name=[name].[ext]'
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        include: path.join(__dirname, "src"),
+        loaders: ["react-hot", "babel-loader"],
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract("css!less"),
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=1&name=[name].[ext]",
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: "url-loader?limit=8192&name=images/[name].[ext]",
+      },
+    ],
   },
 
   // Necessary plugins for hot load
@@ -49,12 +57,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     // extract inline css into separate 'styles.css'
-    new ExtractTextPlugin('styles.css', {allChunks: true}),
-    new webpack.optimize.DedupePlugin()
+    new ExtractTextPlugin("styles.css", { allChunks: true }),
+    new webpack.optimize.DedupePlugin(),
   ],
 
   // Automatically transform files with these extensions
   resolve: {
-    extensions: ['', '.js', '.jsx']
-  }
+    extensions: ["", ".js", ".jsx"],
+  },
 };
