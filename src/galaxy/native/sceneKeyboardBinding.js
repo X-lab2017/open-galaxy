@@ -37,6 +37,10 @@ function sceneKeyboardBinding(container) {
       e.stopPropagation();
       events.toggleHelp.fire();
     }
+    // SODA
+    else if (e.which == Key.BackQuote) {
+      events.toggleGitHubScreen.fire();
+    }
     if (e.shiftKey && !lastShiftKey) {
       lastShiftKey = true;
       events.accelerateNavigation.fire(true);

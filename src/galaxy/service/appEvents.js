@@ -86,6 +86,9 @@ export default eventMirror([
    'around',
    'queryChanged',
 
-   'accelerateNavigation'
+   'accelerateNavigation',
+
+  // SODA
+  'toggleGitHubScreen',
 ], appEvents);
 
