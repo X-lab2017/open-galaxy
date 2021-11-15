@@ -17,7 +17,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!@ffmpeg).*/,
         loader: "babel-loader",
       },
       {
@@ -49,6 +49,10 @@ module.exports = {
 
   resolve: {
     extensions: ["", ".js", ".jsx"],
+  },
+
+  node: {
+    fs: 'empty'
   },
 
   devServer: {
