@@ -4,7 +4,11 @@ export default {
   H: 72,
   L: 76,
   Space: 32,
-  '/': 191
+  '/': 191,
+  // SODA
+  BackSpace: 8,
+  Tab: 9,
+  BackQuote: 192
 };
 
 function isModifier(e) {
