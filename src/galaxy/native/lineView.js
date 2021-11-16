@@ -76,9 +76,9 @@ function renderLinks(scene, THREE) {
     var material = new THREE.LineBasicMaterial({
       vertexColors: THREE.VertexColors,
       blending: THREE.AdditiveBlending,
-      opacity:0.5,
+      opacity:0.05,
       transparent: true,
-      linewidth: 0.5,
+      linewidth: 0.02,
     });
 
     geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
