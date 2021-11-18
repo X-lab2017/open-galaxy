@@ -128,7 +128,6 @@ class MonthlyActiveReposAndUsers extends React.Component {
           color: "#7ec7ff",
           fontSize: 16,
         },
-        // icon:'rect',
         itemGap: 25,
         itemWidth: 18,
         icon: "path://M0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
@@ -146,15 +145,12 @@ class MonthlyActiveReposAndUsers extends React.Component {
         top: "22%",
         left: "15%",
         right: "15%",
-        // bottom: "25%",
-        // containLabel: true
       },
       xAxis: [
         {
           type: "category",
           boundaryGap: false,
           axisLine: {
-            //坐标轴轴线相关设置。数学上的x轴
             show: true,
             lineStyle: {
               color: "#233653",
@@ -162,21 +158,19 @@ class MonthlyActiveReposAndUsers extends React.Component {
           },
           axisLabel: {
             show: true,
-            interval: 1,
-            // showMaxLabel: true,
-            // rotate: -45,
-            //坐标轴刻度标签的相关设置
+            interval: 0,
             textStyle: {
               color: "#7ec7ff",
               padding: 16,
               fontSize: 14,
             },
             formatter: function (data) {
-              return data;
+              return `${data}月`;
             },
           },
           splitLine: {
             show: true,
+            interval: 0,
             lineStyle: {
               color: "#192a44",
             },
