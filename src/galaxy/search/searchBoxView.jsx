@@ -12,7 +12,7 @@ function searchBar(x) {
             <div className='input-group'>
               <input type='text'
                 ref='searchText'
-                className='form-control no-shadow' placeholder='enter a search term'
+                className='form-control no-shadow' placeholder='请输入仓库名称'
                 onChange={runSearch}/>
                 <span className='input-group-btn'>
                   <button className='btn' tabIndex='-1' type='button'>
