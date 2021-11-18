@@ -85,7 +85,7 @@ class DynamicBar extends React.Component {
     this.stage.render(this.props.duration);
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     // 如果结点切换了, 那么组件的状态和数据都要刷新
     if (this.props.dataUrl != this.previousUrl) {
       this.previousUrl = this.props.dataUrl;
