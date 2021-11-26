@@ -9,6 +9,7 @@
 import React from 'react';
 import appEvents from './service/appEvents.js';
 import Key from './utils/key.js';
+import intl from 'react-intl-universal';
 
 export default require('maco')(help, React);
 
@@ -35,63 +36,63 @@ function help(x) {
 
     return (
         <div className='navigation-help'>
-          <h3>开源星系航行指南</h3>
+          <h3>{intl.get('HELP_TITLE')}</h3>
             <table><tbody>
       <tr>
-        <td colSpan="2"><code className='important-key'>鼠标滚轮</code></td>
-        <td colSpan="2">显示该指南</td>
+        <td colSpan="2"><code className='important-key'>{intl.get('HELP_MOUSE_WHEEL')}</code></td>
+        <td colSpan="2">{intl.get('HELP_SHOW_GUIDE')}</td>
       </tr>
       <tr className='spacer-row'>
-        <td colSpan='2'><code className='important-key' >任何键盘按键</code></td>
-        <td colSpan='2'>隐藏该指南</td>
+        <td colSpan='2'><code className='important-key' >{intl.get('HELP_ANY_KEY')}</code></td>
+        <td colSpan='2'>{intl.get('HELP_HIDE_GUIDE')}</td>
       </tr>
       <tr>
       <td><code>W</code></td>
-      <td>前进</td>
+      <td>{intl.get('HELP_MOVE_FORWARD')}</td>
       <td><code>Up</code></td>
-      <td>向上旋转</td>
+      <td>{intl.get('HELP_ROTATE_UP')}</td>
       </tr>
       <tr>
       <td><code>S</code></td>
-      <td>后退</td>
+      <td>{intl.get('HELP_MOVE_BACKWARD')}</td>
       <td><code>Down</code></td>
-      <td>向下旋转</td>
+      <td>{intl.get('HELP_ROTATE_DOWN')}</td>
       </tr>
       <tr>
       <td><code>A</code></td>
-      <td>左移</td>
+      <td>{intl.get('HELP_MOVE_LEFT')}</td>
       <td><code>Left</code></td>
-      <td>向左旋转</td>
+      <td>{intl.get('HELP_ROTATE_LEFT')}</td>
       </tr>
       <tr>
       <td><code>D</code></td>
-      <td>右移</td>
+      <td>{intl.get('HELP_MOVE_RIGHT')}</td>
       <td><code>Right</code></td>
-      <td>向右旋转</td>
+      <td>{intl.get('HELP_ROTATE_RIGHT')}</td>
       </tr>
       <tr>
       <td><code>Q</code></td>
-      <td>左翻</td>
+      <td>{intl.get('HELP_ROLL_RIGHT')}</td>
       <td><code>R</code></td>
-      <td>上移</td>
+      <td>{intl.get('HELP_FLY_UP')}</td>
       </tr>
       <tr>
       <td><code>E</code></td>
-      <td>右翻</td>
+      <td>{intl.get('HELP_ROLL_LEFT')}</td>
       <td><code>F</code></td>
-      <td>下移</td>
+      <td>{intl.get('HELP_FLY_DOWN')}</td>
       </tr>
       <tr>
       <td><code>shift</code></td>
-      <td>加速</td>
+      <td>{intl.get('HELP_MOVE_FASTER')}</td>
       <td><code>Space</code></td>
-      <td>开/关 领航模式</td>
+      <td>{intl.get('HELP_TOGGLE_STEERING')}</td>
       </tr>
       <tr>
       <td><code>L</code></td>
-      <td>显/隐 边</td>
-      <td><code>`(反引号)</code></td>
-      <td>显/隐 数据大屏</td>
+      <td>{intl.get('HELP_TOGGLE_LINK')}</td>
+      <td><code>`({intl.get('HELP_BACKQUOTE')})</code></td>
+      <td>{intl.get('HELP_TOGGLE_DATA_SCREEN')}</td>
       </tr>
       </tbody></table>
         </div>

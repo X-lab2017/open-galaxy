@@ -1,6 +1,7 @@
 import React from "react";
 import ReactEchartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts";
+import intl from 'react-intl-universal';
 
 import banner from "./banner.png";
 
@@ -18,7 +19,7 @@ class MonthlyActiveReposAndUsers extends React.Component {
       // backgroundColor: '#0e1c47',
       title: {
         show: true,
-        text: "{imgBg|GitHub月活仓库与月活用户数}",
+        text: `{imgBg|${intl.get('MonthlyActiveReposAndUsers_TITLE')}}`,
         left: "center",
         top: 0,
         textStyle: {
@@ -27,11 +28,10 @@ class MonthlyActiveReposAndUsers extends React.Component {
               fontSize: 16,
               fontWeight: "bold",
               color: "white",
-              // fontFamily: "Microsoft YaHei",
+              padding: [0, 20, 0, 30],
               backgroundColor: {
                 image: banner,
               },
-              width: 300,
               height: 50,
             },
           },
@@ -134,10 +134,10 @@ class MonthlyActiveReposAndUsers extends React.Component {
 
         data: [
           {
-            name: "月活仓库",
+            name: intl.get('MonthlyActiveReposAndUsers_REPO'),
           },
           {
-            name: "月活用户",
+            name: intl.get('MonthlyActiveReposAndUsers_USER'),
           },
         ],
       },
@@ -165,7 +165,7 @@ class MonthlyActiveReposAndUsers extends React.Component {
               fontSize: 14,
             },
             formatter: function (data) {
-              return `${data}月`;
+              return `${data}${intl.get('MonthlyActiveReposAndUsers_XAXIS_LABEL_UNIT')}`;
             },
           },
           splitLine: {
@@ -256,7 +256,7 @@ class MonthlyActiveReposAndUsers extends React.Component {
       ],
       series: [
         {
-          name: "月活仓库",
+          name: intl.get('MonthlyActiveReposAndUsers_REPO'),
           yAxisIndex: 0,
           type: "line",
           symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
@@ -306,7 +306,7 @@ class MonthlyActiveReposAndUsers extends React.Component {
           data: repos_counts,
         },
         {
-          name: "月活用户",
+          name: intl.get('MonthlyActiveReposAndUsers_USER'),
           yAxisIndex: 1,
           type: "line",
           symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆

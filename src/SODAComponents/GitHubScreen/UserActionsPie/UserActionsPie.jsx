@@ -1,6 +1,7 @@
 import React from "react";
 import ReactEchartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts";
+import intl from 'react-intl-universal';
 
 import base64Images from './base64Images.js';
 import banner from "./banner.png";
@@ -36,7 +37,7 @@ class UserActionsPie extends React.Component {
       // backgroundColor: "#212434",
       title: {
         show: true,
-        text: "{imgBg|2021年用户行为比例（更新中）}",
+        text: `{imgBg|${intl.get('UserActionsPie_TITLE')}}`,
         left: "center",
         top: 0,
         textStyle: {
@@ -45,11 +46,10 @@ class UserActionsPie extends React.Component {
               fontSize: 16,
               fontWeight: "bold",
               color: "white",
-              // fontFamily: "Microsoft YaHei",
+              padding: [0, 20, 0, 30],
               backgroundColor: {
                 image: banner,
               },
-              width: 300,
               height: 50,
             },
           },
@@ -177,7 +177,7 @@ class UserActionsPie extends React.Component {
           data: [
             {
               value: issueNum,
-              name: "发起Issue",
+              name: intl.get('UserActionsPie_OPEN_ISSUE'),
               itemStyle: {
                 normal: {
                   opacity: 1,
@@ -194,7 +194,7 @@ class UserActionsPie extends React.Component {
             },
             {
               value: issueCommentNum,
-              name: "Issue评论",
+              name: intl.get('UserActionsPie_COMMENT_ISSUE'),
               itemStyle: {
                 normal: {
                   opacity: 1,
@@ -211,7 +211,7 @@ class UserActionsPie extends React.Component {
             },
             {
               value: PRNum,
-              name: "发起PR",
+              name: intl.get('UserActionsPie_OPEN_PR'),
               itemStyle: {
                 normal: {
                   opacity: 1,
@@ -228,7 +228,7 @@ class UserActionsPie extends React.Component {
             },
             {
               value: PRReviewCommentNum,
-              name: "PR评论",
+              name: intl.get('UserActionsPie_COMMENT_PR'),
               itemStyle: {
                 normal: {
                   opacity: 1,
@@ -245,7 +245,7 @@ class UserActionsPie extends React.Component {
             },
             {
               value: forkNum,
-              name: "Fork",
+              name: intl.get('UserActionsPie_FORK'),
               itemStyle: {
                 normal: {
                   opacity: 1,
@@ -262,7 +262,7 @@ class UserActionsPie extends React.Component {
             },
             {
               value: watchNum,
-              name: "Watch",
+              name: intl.get('UserActionsPie_WATCH'),
               itemStyle: {
                 normal: {
                   opacity: 1,

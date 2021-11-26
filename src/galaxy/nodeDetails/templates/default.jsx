@@ -1,4 +1,5 @@
 import React from 'react';
+import intl from 'react-intl-universal';
 
 export default require('maco').template(template, React);
 
@@ -15,7 +16,7 @@ function template(props) {
           <div className="row">
             <h2 id={model.id} className='in-degree'>{model.inDegree}</h2>
           </div>
-          <div className="row small">关联项目</div>
+          <div className="row small">{intl.get('RELATED_PROJECT')}</div>
         </div>
         {/* <div className="col-xs-3"> */}
         {/*   <div className="row"> */}

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactEchartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts";
+import intl from 'react-intl-universal';
 
 import banner from "./banner.png";
 
@@ -76,7 +77,7 @@ class TopActiveRepos extends React.Component {
     var option = {
       title: {
         show: true,
-        text: "{imgBg|活跃度TOP20的开源项目}",
+        text: `{imgBg|${intl.get('TopActiveRepos_TITLE')}}`,
         left: "center",
         top: 0,
         textStyle: {
@@ -85,10 +86,10 @@ class TopActiveRepos extends React.Component {
               fontSize: 16,
               fontWeight: "bold",
               color: "white",
+              padding: [0, 20, 0, 30],
               backgroundColor: {
                 image: banner,
               },
-              width: 300,
               height: 50,
             },
           },

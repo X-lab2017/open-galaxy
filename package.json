@@ -61,6 +61,7 @@
     "react": "^0.14.5",
     "react-bootstrap": "^0.28.1",
     "react-dom": "^0.14.5",
+    "react-intl-universal": "^2.4.8",
     "react-list": "^0.7.10",
     "react-router": "^1.0.3",
     "style-loader": "^0.12.2",

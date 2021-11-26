@@ -1,4 +1,5 @@
 import React from "react";
+import intl from "react-intl-universal";
 
 import banner from "./banner.png";
 import world2020 from "./world-2020.svg";
@@ -19,14 +20,9 @@ class ContributorsGeoDistribution extends React.Component {
       >
         <div
           style={{
-            marginTop: 5,
-            marginLeft: (width-300)/2,
-            marginBottom: 5,
-            width: 300,
             height: 50,
-            backgroundImage: `url(${banner})`,
-            backgroundSize: "100% 100%",
-            backgroundRepeat: "no-repeat",
+            marginTop: 5,
+            marginBottom: 5,
             // 水平、垂直居中文字 ---- 外层设置即可
             display: "flex",
             justifyContent: "center",
@@ -35,15 +31,21 @@ class ContributorsGeoDistribution extends React.Component {
         >
           <div
             style={{
+              lineHeight: '50px',
+              backgroundImage: `url(${banner})`,
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
               fontSize: 16,
               fontWeight: "bold",
               color: "white",
+              paddingLeft: 30,
+              paddingRight: 20,
             }}
           >
-            2020年开源贡献者地理分布
+              {intl.get("ContributorsGeoDistribution_TITLE")}
           </div>
         </div>
-        <img src={world2020} width={width} height={height-50-5-5} />
+        <img src={world2020} width={width} height={height - 50 - 5 - 5} />
       </div>
     );
   }
