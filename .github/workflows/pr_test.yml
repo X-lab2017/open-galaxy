@@ -1,16 +1,25 @@
 name: pr_test
 
 on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+  issue_comment:
+    types: [created]
   # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  pr_test:
+  pr-test:
+    if: github.event.issue.pull_request
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Check comment command
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: ${{ github.event.comment.body }}
+          regex: '^/build-test$'
+
       - uses: actions/github-script@v3
         id: get-pr
         with:
