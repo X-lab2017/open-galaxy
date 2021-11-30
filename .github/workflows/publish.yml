@@ -8,6 +8,7 @@ on:
 
 jobs:
   publish:
+    if: github.repository_owner == 'X-lab2017'
     runs-on: ubuntu-latest
 
     steps:
