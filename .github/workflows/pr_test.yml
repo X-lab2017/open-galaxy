@@ -22,6 +22,7 @@ jobs:
 
       - uses: actions/github-script@v3
         id: get-pr
+        if: ${{ steps.regex-match.outputs.match != '' }}
         with:
           script: |
             const request = {
@@ -38,22 +39,26 @@ jobs:
             }
 
       - name: Check out pull request head
+        if: ${{ steps.regex-match.outputs.match != '' }}
         uses: actions/checkout@v2
         with:
           repository: ${{ fromJSON(steps.get-pr.outputs.result).head.repo.full_name }}
           ref: ${{ fromJSON(steps.get-pr.outputs.result).head.sha }}
 
       - name: Setup node 14 env
+        if: ${{ steps.regex-match.outputs.match != '' }}
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
       - name: Build the website
+        if: ${{ steps.regex-match.outputs.match != '' }}
         run: |
           npm install
           npm run build
 
       - name: Upload to OSS
+        if: ${{ steps.regex-match.outputs.match != '' }}
         uses: tvrcgo/upload-to-oss@master
         with:
           key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
@@ -64,6 +69,7 @@ jobs:
             ./build/**:${{ secrets.OSS_TARGET_PATH }}${{ github.event.issue.number }}/
 
       - name: Create comment
+        if: ${{ steps.regex-match.outputs.match != '' }}
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
