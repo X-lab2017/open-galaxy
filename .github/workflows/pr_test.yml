@@ -67,4 +67,4 @@ jobs:
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: The website for this PR is deployed at https://oss.x-lab.info/${{ secrets.OSS_TARGET_PATH }}${{ github.event.issue.number }}/
+          body: The website for this PR is deployed at https://open-galaxy.x-lab.info${{ secrets.OSS_TARGET_PATH }}${{ github.event.issue.number }}/
