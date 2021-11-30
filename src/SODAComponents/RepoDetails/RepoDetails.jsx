@@ -6,6 +6,8 @@ import DynamicBar from "./DynamicBar/DynamicBar.jsx";
 import ProjectNetwork from "./ProjectNetwork/ProjectNetwork.jsx";
 import ContributorNetwork from "./ContributorNetwork/ContributorNetwork.jsx";
 
+import intl from 'react-intl-universal';
+
 // module.exports = require("maco")(RepoDetails, React);
 
 class RepoDetails extends React.Component {
@@ -35,7 +37,7 @@ class RepoDetails extends React.Component {
     return (
       <div>
         <div className="cool-box contributors-activity-evolution-box">
-          <h3>贡献者活跃度演进榜</h3>
+          <h3>{intl.get('CONTRIBUTOR_ACTIVITY_EVOLUTION')}</h3>
           <DynamicBar
             theme="dark"
             width={600}
@@ -50,14 +52,14 @@ class RepoDetails extends React.Component {
 
         <div className="cool-box two-networks-box">
           <div className="project-network-box">
-            <h3>项目协作网络</h3>
+            <h3>{intl.get('PROJECT_CORRELATION_NETWORK')}</h3>
             <ProjectNetwork
               currentNode={this.state.currentRepoFullname}
               data={this.state.projectNetworkData}
             />
           </div>
           <div className="contributor-network-box">
-            <h3>贡献者协作网络</h3>
+            <h3>{intl.get('CONTRIBUTOR_CORRELATION_NETWORK')}</h3>
             <ContributorNetwork data={this.state.contributorNetworkData} />
           </div>
         </div>

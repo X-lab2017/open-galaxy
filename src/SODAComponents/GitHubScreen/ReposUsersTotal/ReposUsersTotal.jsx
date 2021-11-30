@@ -1,5 +1,6 @@
 import React from "react";
 import githubLogo from "./github-logo.svg";
+import intl from 'react-intl-universal';
 
 class ReposUsersTotal extends React.Component {
   render() {
@@ -31,7 +32,7 @@ class ReposUsersTotal extends React.Component {
               lineHeight: `${height-10}px`,
             }}
           >
-            项目 {toThousands(reposTotal)}
+            {intl.get('ReposUsersTotal_REPOS')} {toThousands(reposTotal)}
           </div>
         </div>
 
@@ -50,7 +51,7 @@ class ReposUsersTotal extends React.Component {
               lineHeight: `${height-10}px`,
             }}
           >
-            用户 {toThousands(usersTotal)}
+            {intl.get('ReposUsersTotal_USERS')} {toThousands(usersTotal)}
           </div>
         </div>
       </div>

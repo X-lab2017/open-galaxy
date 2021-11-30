@@ -4,6 +4,7 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require("path");
 var webpack = require("webpack");
+var CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/main",
@@ -42,6 +43,12 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin("styles.css", { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
+    new CopyPlugin([
+      {
+        from: __dirname + "/public",
+        to: __dirname + "/build/public",
+      },
+    ]),
   ],
   resolveLoader: {
     root: path.join(__dirname, "node_modules"),

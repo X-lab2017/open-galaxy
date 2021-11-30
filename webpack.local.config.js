@@ -3,6 +3,7 @@ var webpack = require("webpack");
 var path = require("path");
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyPlugin = require("copy-webpack-plugin");
 
 // Where to listen for the dev server
 var port = process.env.PORT || 8080;
@@ -63,6 +64,12 @@ module.exports = {
     // extract inline css into separate 'styles.css'
     new ExtractTextPlugin("styles.css", { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
+    new CopyPlugin([
+      {
+        from: __dirname + "/public",
+        to: __dirname + "/build/public",
+      },
+    ]),
   ],
 
   // Automatically transform files with these extensions

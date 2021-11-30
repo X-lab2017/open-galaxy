@@ -1,5 +1,6 @@
 import React from 'react';
 import resource from '../utils/resources.js';
+import intl from 'react-intl-universal';
 
 var maco = require('maco');
 registerDataTemplates();
@@ -45,12 +46,10 @@ function registerDataTemplates() {
     return (
       <h4 className='window-title'>
         <span className='node-name node-focus' id={ctx.id}>{ctx.nodeName}</span>
-        <span> 有 </span>
-        <strong> {ctx.degreeNumber} </strong>
         {/* <span className={ctx.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}> */}
         {/*   {ctx.degreeKindName} */}
         {/* </span> */}
-        <span> 个关联项目 </span>
+        {intl.getHTML('COUNT_FOR_RELATED_PROJECTS', {count: ctx.degreeNumber})}
       </h4>
     );
   }, React));
@@ -58,7 +57,7 @@ function registerDataTemplates() {
   resource.add('SearchResultWindowViewModel', maco.template(ctx => {
     return (
       <h4 className='window-title'>
-        共有 <strong>{ctx.matchesCountString}</strong> 个匹配项
+        {intl.getHTML('COUNT_FOR_SEARCH_MATCHES', {count: ctx.matchesCountString})}
       </h4>
     );
   }, React));

@@ -17,6 +17,8 @@ import createKeyboardBindings from "./native/sceneKeyboardBinding.js";
 import GitHubScreen from "../SODAComponents/GitHubScreen/GitHubScreen.jsx";
 import RepoDetails from '../SODAComponents/RepoDetails/RepoDetails.jsx';
 
+import LocaleSelector from './locale/LocaleSelector.jsx';
+
 import appEvents from "./service/appEvents.js";
 var webglEnabled = require("webgl-enabled")();
 module.exports = require("maco")(scene, React);
@@ -42,6 +44,7 @@ function scene(x) {
         <NodeDetails />
         <SteeringIndicator />
         <SearchBox />
+        <LocaleSelector />
         <WindowCollection />
         <Help />
         {/* <About /> */}

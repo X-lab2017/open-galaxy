@@ -1,18 +1,18 @@
 import React from 'react';
 import searchBoxModel from './searchBoxModel.js';
+import intl from 'react-intl-universal';
 
 module.exports = require('maco')(searchBar, React);
 
 function searchBar(x) {
   x.render = function () {
     return (
-      <div className='container row'>
-        <div className='search col-xs-12 col-sm-6 col-md-4'>
+        <div className='search'>
           <form className='search-form' role='search' onSubmit={runSubmit}>
             <div className='input-group'>
               <input type='text'
                 ref='searchText'
-                className='form-control no-shadow' placeholder='请输入仓库名称'
+                className='form-control no-shadow' placeholder={intl.get('SEARCH_PLACEHOLDER')}
                 onChange={runSearch}/>
                 <span className='input-group-btn'>
                   <button className='btn' tabIndex='-1' type='button'>
@@ -22,7 +22,6 @@ function searchBar(x) {
             </div>
           </form>
         </div>
-      </div>
     );
   };
 

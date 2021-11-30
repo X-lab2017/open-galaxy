@@ -1,6 +1,7 @@
 import React from "react";
 import ReactEchartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts";
+import intl from 'react-intl-universal';
 
 import banner from "./banner.png";
 
@@ -17,7 +18,7 @@ class CompaniesScatter extends React.Component {
     const option = {
       title: {
         show: true,
-        text: "{imgBg|知名公司GitHub仓库数及总活跃度}",
+        text: `{imgBg|${intl.get('CompaniesScatter_TITLE')}}`,
         left: "center",
         top: 0,
         textStyle: {
@@ -26,11 +27,10 @@ class CompaniesScatter extends React.Component {
               fontSize: 16,
               fontWeight: "bold",
               color: "white",
-              // fontFamily: "Microsoft YaHei",
+              padding: [0, 20, 0, 30],
               backgroundColor: {
                 image: banner,
               },
-              width: 330,
               height: 50,
             },
           },
@@ -39,7 +39,7 @@ class CompaniesScatter extends React.Component {
       tooltip: {
         formatter: function (params) {
           let d = params.data;
-          return `${d[2]}<br />总仓库数: ${d[0]}<br />总活跃度: ${d[1].toFixed(1)}`
+          return `${d[2]}<br />${intl.get('CompaniesScatter_TOTAL_REPOS_NUM')}: ${d[0]}<br />${intl.get('CompaniesScatter_TOTAL_ACTIVITY')}: ${d[1].toFixed(1)}`
         },
       },
       grid: {
@@ -52,7 +52,7 @@ class CompaniesScatter extends React.Component {
       xAxis: {
         type: "log",
         logBase: 10,
-        name: "项目数",
+        name: intl.get('CompaniesScatter_TOTAL_REPOS_NUM'),
         nameGap: 25,
         nameLocation: "middle",
         nameTextStyle: {
@@ -71,7 +71,7 @@ class CompaniesScatter extends React.Component {
       yAxis: {
         type: "log",
         logBase: 10,
-        name: "总活跃度",
+        name: intl.get('CompaniesScatter_TOTAL_ACTIVITY'),
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
