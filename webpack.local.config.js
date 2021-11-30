@@ -34,7 +34,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: path.join(__dirname, "src"),
+        include: [ path.join(__dirname, "src"), path.join(__dirname, "node_modules/@ffmpeg") ],
         loaders: ["react-hot", "babel-loader"],
       },
       {
@@ -69,4 +69,8 @@ module.exports = {
   resolve: {
     extensions: ["", ".js", ".jsx"],
   },
+
+  node: {
+    fs: 'empty'
+  }
 };

@@ -43,7 +43,26 @@ h4 {
 .window-list-content {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 200px;
+  max-height: 250px;
+}
+.window-list-content::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 4px;
+  // scrollbar-arrow-color: red;
+}
+.window-list-content::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.8);
+  // scrollbar-arrow-color: red;
+}
+.window-list-content::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .node-focus {
@@ -203,7 +222,7 @@ a.media {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.55);
   padding: 7px;
-  right: 20px;
+  left: 50px;
   top: 50%;
   transform: translateY(-50%);
   font-family: 'Roboto', sans-serif;

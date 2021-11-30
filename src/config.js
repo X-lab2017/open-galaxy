@@ -1,3 +1,3 @@
 export default {
-  dataUrl: 'http://oss.x-lab.info/'
+  dataUrl: 'https://oss.x-lab.info/'
 };

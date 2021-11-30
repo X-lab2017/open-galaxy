@@ -17,7 +17,7 @@ function steeringIndicator(x) {
     return (
       <div className='steering'>
         <div className='inner'></div>
-        <div className="steering-help">Press SPACE to deactivate steering mode</div>
+        <div className="steering-help">按下 Space 键关闭领航模式</div>
       </div>
     );
   };

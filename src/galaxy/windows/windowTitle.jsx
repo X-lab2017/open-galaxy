@@ -45,11 +45,12 @@ function registerDataTemplates() {
     return (
       <h4 className='window-title'>
         <span className='node-name node-focus' id={ctx.id}>{ctx.nodeName}</span>
-        <span> has </span>
+        <span> 有 </span>
         <strong> {ctx.degreeNumber} </strong>
-        <span className={ctx.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}>
-          {ctx.degreeKindName}
-        </span>
+        {/* <span className={ctx.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}> */}
+        {/*   {ctx.degreeKindName} */}
+        {/* </span> */}
+        <span> 个关联项目 </span>
       </h4>
     );
   }, React));
@@ -57,7 +58,7 @@ function registerDataTemplates() {
   resource.add('SearchResultWindowViewModel', maco.template(ctx => {
     return (
       <h4 className='window-title'>
-        Found <strong>{ctx.matchesCountString}</strong> matches
+        共有 <strong>{ctx.matchesCountString}</strong> 个匹配项
       </h4>
     );
   }, React));

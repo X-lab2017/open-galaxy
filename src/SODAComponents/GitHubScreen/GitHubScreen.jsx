@@ -13,7 +13,7 @@ import ContributorsGeoDistribution from "./ContributorsGeoDistribution/Contribut
 import CompaniesScatter from "./CompaniesScatter/CompaniesScatter.jsx";
 
 // var BASE_URL = "http://192.168.3.16:8081";
-var BASE_URL = "http://nzcer.cn:8081";
+var BASE_URL = "https://nzcer.cn:8081";
 
 class GitHubScreen extends React.Component {
   constructor() {
