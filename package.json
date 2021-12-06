@@ -1,7 +1,7 @@
 {
-  "name": "pmviz",
+  "name": "open-galaxy",
   "version": "1.0.0",
-  "description": "Visualization of common package managers",
+  "description": "Explore the open source world free",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,25 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/anvaka/pm.git"
+    "url": "https://github.com/X-lab2017/open-galaxy"
   },
   "keywords": [
-    "ngraph",
-    "visualization",
-    "package",
-    "managers",
-    "npm",
-    "bower",
-    "cpan",
-    "composer",
-    "go"
+    "github",
+    "network",
+    "visualization"
   ],
-  "author": "Andrei Kashcha",
+  "author": "X-lab",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anvaka/pm/issues"
+    "url": "https://github.com/X-lab2017/open-galaxy/issues"
   },
-  "homepage": "https://github.com/anvaka/pm",
+  "homepage": "https://open-galaxy.x-lab.info/",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
