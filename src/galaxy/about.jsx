@@ -1,7 +1,6 @@
 import React from 'react';
-export default require('maco').template(about, React);
 
-function about() {
+export default function about() {
   return (
   <div  className='label about'>
      <a className='reset-color'

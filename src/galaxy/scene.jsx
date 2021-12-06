@@ -21,13 +21,19 @@ import LocaleSelector from './locale/LocaleSelector.jsx';
 
 import appEvents from "./service/appEvents.js";
 var webglEnabled = require("webgl-enabled")();
-module.exports = require("maco")(scene, React);
 
-function scene(x) {
-  var nativeRenderer, keyboard;
-  var hoverModel, delegateClickHandler;
+class scene extends React.Component {
+  constructor() {
+    super();
+    this.handleDelegateClick = this.handleDelegateClick.bind(this);
+  }
 
-  x.render = function () {
+  nativeRenderer;
+  keyboard;
+  hoverModel;
+  delegateClickHandler;
+
+  render() {
     if (!webglEnabled) {
       return <NoWebGL />;
     }
@@ -52,23 +58,23 @@ function scene(x) {
     );
   };
 
-  x.componentDidMount = function () {
+  componentDidMount() {
     if (!webglEnabled) return;
-    var container = findDOMNode(x.refs.graphContainer);
-    nativeRenderer = createNativeRenderer(container);
-    keyboard = createKeyboardBindings(container);
-    delegateClickHandler = container.parentNode;
-    delegateClickHandler.addEventListener("click", handleDelegateClick);
+    var container = findDOMNode(this.refs.graphContainer);
+    this.nativeRenderer = createNativeRenderer(container);
+    this.keyboard = createKeyboardBindings(container);
+    this.delegateClickHandler = container.parentNode;
+    this.delegateClickHandler.addEventListener("click", this.handleDelegateClick);
   };
 
-  x.componentWillUnmount = function () {
-    if (nativeRenderer) nativeRenderer.destroy();
-    if (keyboard) keyboard.destroy();
-    if (delegateClickHandler)
-      delegateClickHandler.removeEventListener("click", handleDelegateClick);
+  componentWillUnmount() {
+    if (this.nativeRenderer) this.nativeRenderer.destroy();
+    if (this.keyboard) this.keyboard.destroy();
+    if (this.delegateClickHandler)
+      this.delegateClickHandler.removeEventListener("click", this.handleDelegateClick);
   };
 
-  function handleDelegateClick(e) {
+  handleDelegateClick(e) {
     var clickedEl = e.target;
 
     // since we are handling all clicks, we should avoid excessive work and
@@ -89,3 +95,5 @@ function scene(x) {
     }
   }
 }
+
+export default scene;

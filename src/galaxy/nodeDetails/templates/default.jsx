@@ -1,9 +1,7 @@
 import React from 'react';
 import intl from 'react-intl-universal';
 
-export default require('maco').template(template, React);
-
-function template(props) {
+export default function template(props) {
   var model = props.model;
 
   return (

@@ -31,6 +31,8 @@
   "HELP_BACKQUOTE": "反引号",
   "HELP_TOGGLE_DATA_SCREEN": "显/隐 数据大屏",
 
+  "SteeringIndicator_HOW_TO_TURN_OFF": "按下 Space 键关闭领航模式",
+
   "ReposUsersTotal_REPOS": "仓库",
   "ReposUsersTotal_USERS": "用户",
   "MonthlyActiveReposAndUsers_TITLE": "GitHub月活仓库与月活用户数",
