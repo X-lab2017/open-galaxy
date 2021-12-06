@@ -4,6 +4,7 @@
  */
 import appEvents from './service/appEvents.js';
 import React from 'react';
+import intl from 'react-intl-universal';
 
 class steeringIndicator extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ class steeringIndicator extends React.Component {
     return (
       <div className='steering'>
         <div className='inner'></div>
+        <div className="steering-help">{intl.get('SteeringIndicator_HOW_TO_TURN_OFF')}</div>
       </div>
     );
   };
