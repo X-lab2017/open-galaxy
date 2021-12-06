@@ -1,9 +1,7 @@
 import React from 'react';
 import formatNumber from '../utils/formatNumber.js';
 
-module.exports = require('maco').template(windowTitle, React);
-
-function windowTitle(props) {
+export default function windowTitle(props) {
   var item = props.viewModel;
   var image = '';
   if (item.icon) {

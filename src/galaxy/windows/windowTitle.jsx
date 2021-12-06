@@ -2,23 +2,17 @@ import React from 'react';
 import resource from '../utils/resources.js';
 import intl from 'react-intl-universal';
 
-var maco = require('maco');
 registerDataTemplates();
 
-module.exports = maco.template(windowTitle, React);
-
-var ContentControl = maco(contentControl, React);
-
-function windowTitle(props) {
-  // TODO: Close/drag?
-  var viewModel = props.viewModel;
-  return <ContentControl viewModel={viewModel} key={viewModel.id} />;
+class windowTitle extends React.Component {
+  render() {
+    return <ContentControl viewModel={this.props.viewModel} key={this.props.viewModel.id} />;
+  }
 }
 
-
-function contentControl(x) {
-  x.render = function() {
-    var viewModel = x.props.viewModel;
+class ContentControl extends React.Component {
+  render() {
+    var viewModel = this.props.viewModel;
     var Template;
 
     if (viewModel) {
@@ -41,24 +35,42 @@ function contentTemplateSelector(type) {
 }
 
 function registerDataTemplates() {
-  resource.add('DegreeWindowViewModel', maco.template(ctx => {
-    if (ctx.id === undefined) return null;
-    return (
-      <h4 className='window-title'>
-        <span className='node-name node-focus' id={ctx.id}>{ctx.nodeName}</span>
-        {/* <span className={ctx.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}> */}
-        {/*   {ctx.degreeKindName} */}
-        {/* </span> */}
-        {intl.getHTML('COUNT_FOR_RELATED_PROJECTS', {count: ctx.degreeNumber})}
-      </h4>
-    );
-  }, React));
+  resource.add(
+    "DegreeWindowViewModel",
+    // React class component
+    class extends React.Component {
+      render() {
+        if (this.props.id === undefined) return null;
+        return (
+          <h4 className="window-title">
+            <span className="node-name node-focus" id={this.props.id}>
+              {this.props.nodeName}
+            </span>
+            {/* <span className={this.props.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}> */}
+            {/*   {this.props.degreeKindName} */}
+            {/* </span> */}
+            {intl.getHTML("COUNT_FOR_RELATED_PROJECTS", {
+              count: this.props.degreeNumber,
+            })}
+          </h4>
+        );
+      }
+    }
+  );
 
-  resource.add('SearchResultWindowViewModel', maco.template(ctx => {
-    return (
-      <h4 className='window-title'>
-        {intl.getHTML('COUNT_FOR_SEARCH_MATCHES', {count: ctx.matchesCountString})}
-      </h4>
-    );
-  }, React));
+  resource.add(
+    "SearchResultWindowViewModel",
+    // React functional component
+    (props) => {
+      return (
+        <h4 className="window-title">
+          {intl.getHTML("COUNT_FOR_SEARCH_MATCHES", {
+            count: props.matchesCountString,
+          })}
+        </h4>
+      );
+    }
+  );
 }
+
+export default windowTitle;
