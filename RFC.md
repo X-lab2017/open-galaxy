@@ -1,16 +1,22 @@
-## Project Name
+## Open Galaxy
 
 ## Project Briefing
 
-Please briefly introduce your project to others, including what the highlights are.
+Open Galaxy has built a magnificent open source galaxy through visualization technology, including all repositories and developers in GitHub platform. On the web page, users can use the keyboard to shuttle freely through the whole galaxy, witness the various connections of open source projects, as if they were in the vast universe and deeply feel the grandeur of open source.
 
 ## Project Background
 
-Please give the reason why you and your team want to develop this project. What kind of problems can this project solve? Does your project solve any existing issues of Nebula Graph?
+In the whole GitHub open source community, millions of developers and projects have already formed a kind of social network through various behaviors. Visualization technology can make this network more clearly show us.
+
+Therefore, we have made some improvements based on the open source project anvaka / PM, calculated the correlation degree between the project and developers through some algorithms, and then laid out the nodes through some gravitational layout algorithms.
+
+Due to the large order of magnitude, ordinary databases are difficult to meet our computing requirements, so we chose Nebula graph to help us build such a huge network.
 
 ## Project Value
 
-Please give some typical application scenarios of this project and what business values users can get out of it.
+Visualization is not simply to present elements, but to mine hidden or not so easy to find relationships and attributes through good design. Open galaxy not only has good visual design, but also has deep interaction with users, allowing users to explore freely. For a community or enterprise, such visualization technology plays a very good role in publicity or community analysis.
+
+
 
 ## Project Design
 
@@ -30,3 +36,4 @@ Pleas provide enough use cases to test the functionality of your project.
 ## <.....>
 
 Please feel free to add anything that you deem missing here.
+
