@@ -1,0 +1,31 @@
+@startuml
+footer OpenGalaxy Architecture
+
+node "X-lab Open Source Data Infra" as di
+note right: All GitHub log data in Clickhouse
+database "Nebula Graph" as ng
+node "Spark" as sp
+note bottom: Calculate PageRank with Pregel
+node "Repo Data Service" as rds
+note left: Repo detail data service with Node.js
+node "Offline Graph Service" as ogs
+note top: Calculate graph layout with ngraph
+node "Online Static Storage" as oss
+node OpenGalaxy as og {
+    node "Repo Detail" as rd {
+
+    }
+    node "Galaxy" as g {
+
+    }
+}
+
+di -down-> sp
+ng -down-> rds: Relation Query
+ng -right-> ogs: Data Export
+sp -right-> ng: Data Import
+ogs -right-> oss: 3D Graph Layout
+oss -down-> g: Galaxy Data
+rds -right-> rd: Repo Detail
+g -left- rd: Detail Panel
+@enduml
