@@ -30,11 +30,11 @@ function RepoDetailsStore() {
     let contributorsActivityEvolutionDataUrl = `https://hypertrons-oss.x-lab.info/opengalaxy-mock-data/contributors-activity-evolution/data_${
       currentNodeId % 8
     }.csv`;
-    let projectNetworkDataUrl = `https://hypertrons-oss.x-lab.info/repo/${currentRepoFullname}.json`;
+    let projectNetworkDataUrl = `https://open-galaxy-backend.x-lab.info:8443/repo/repo_network/${currentRepoFullname}`;
     let projectNetworkData = await request(projectNetworkDataUrl, {
       responseType: "json",
     });
-    let contributorNetworkDataUrl = `https://hypertrons-oss.x-lab.info/repo/${currentRepoFullname}_top.json`;
+    let contributorNetworkDataUrl = `https://open-galaxy-backend.x-lab.info:8443/repo/developer_network/${currentRepoFullname}`;
     let contributorNetworkData = await request(contributorNetworkDataUrl, {
       responseType: "json",
     });
