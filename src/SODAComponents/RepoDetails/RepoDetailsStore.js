@@ -27,9 +27,9 @@ function RepoDetailsStore() {
 
     let currentRepoFullname = scene.getNodeInfo(currentNodeId).name;
 
-    let contributorsActivityEvolutionDataUrl = `https://hypertrons-oss.x-lab.info/opengalaxy-mock-data/contributors-activity-evolution/data_${
-      currentNodeId % 8
-    }.csv`;
+//     let contributorsActivityEvolutionDataUrl = `https://hypertrons-oss.x-lab.info/opengalaxy-mock-data/contributors-activity-evolution/data_${
+//       currentNodeId % 8
+//     }.csv`;
 
     let projectNetworkDataUrl = `https://open-galaxy-backend.x-lab.info:8443/repo/repo_network/${currentRepoFullname}`;
     let projectNetworkData = await request(projectNetworkDataUrl, {
@@ -49,7 +49,7 @@ function RepoDetailsStore() {
 
     return {
       currentRepoFullname,
-      contributorsActivityEvolutionDataUrl,
+      // contributorsActivityEvolutionDataUrl,
       projectNetworkData,
       contributorNetworkData,
     };
