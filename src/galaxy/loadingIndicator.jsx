@@ -1,27 +1,31 @@
 import React from 'react';
 import scene from './store/scene.js';
 
-module.exports = require('maco')(loadingIndicator, React);
+class loadingIndicator extends React.Component {
+  constructor() {
+    super();
+    this.loadingMessage = '';
+    this.updateLoadingIndicator = this.updateLoadingIndicator.bind(this);
+  }
 
-function loadingIndicator(x) {
-  var loadingMessage = '';
-
-  x.render = function() {
+  render() {
     return scene.isLoading() ?
-        <div className='label loading'>{loadingMessage}</div> :
+        <div className='label loading'>{this.loadingMessage}</div> :
         null;
   };
 
-  x.componentDidMount = function() {
-    scene.on('loadProgress', updateLoadingIndicator);
+  componentDidMount() {
+    scene.on('loadProgress', this.updateLoadingIndicator);
   };
 
-  x.componentWillUnmount = function () {
-    scene.off('loadProgress', updateLoadingIndicator);
+  componentWillUnmount () {
+    scene.off('loadProgress', this.updateLoadingIndicator);
   };
 
-  function updateLoadingIndicator(progress) {
-    loadingMessage = `${progress.message} - ${progress.completed}`;
-    x.forceUpdate();
+  updateLoadingIndicator(progress) {
+    this.loadingMessage = `${progress.message} - ${progress.completed}`;
+    this.forceUpdate();
   }
 }
+
+export default loadingIndicator;

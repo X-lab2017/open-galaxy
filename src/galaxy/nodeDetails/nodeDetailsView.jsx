@@ -3,13 +3,17 @@ import detailModel from './nodeDetailsStore.js';
 import specialNodeDetails from './templates/all.js';
 import scene from '../store/scene.js';
 
-module.exports = require('maco')(detailedNodeView, React);
+class detailedNodeView extends React.Component {
+  constructor() {
+    super();
+    this.getNodeDetails = this.getNodeDetails.bind(this);
+    this.updateView = this.updateView.bind(this);
+  }
 
-function detailedNodeView(x) {
-  x.render = function () {
+  render() {
     var selectedNode = detailModel.getSelectedNode();
     if (!selectedNode) return null;
-    var NodeDetails = getNodeDetails(selectedNode);
+    var NodeDetails = this.getNodeDetails(selectedNode);
 
     return (
       <div className='node-details'>
@@ -18,20 +22,22 @@ function detailedNodeView(x) {
     );
   };
 
-  x.componentDidMount = function() {
-    detailModel.on('changed', updateView);
+  componentDidMount() {
+    detailModel.on('changed', this.updateView);
   };
 
-  x.componentWillUnmount = function () {
-    detailModel.off('changed', updateView);
+  componentWillUnmount() {
+    detailModel.off('changed', this.updateView);
   };
 
-  function getNodeDetails(viewModel) {
+  getNodeDetails(viewModel) {
     var Template = specialNodeDetails[scene.getGraphName()] || specialNodeDetails.default;
     return Template;
   }
 
-  function updateView() {
-    x.forceUpdate();
+  updateView() {
+    this.forceUpdate();
   }
 }
+
+export default detailedNodeView;

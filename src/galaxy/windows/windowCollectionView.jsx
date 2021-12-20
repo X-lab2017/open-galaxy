@@ -5,29 +5,34 @@ import React from 'react';
 import NodeListView from './nodeListView.jsx';
 import windowCollectionModel from './windowCollectionModel.js';
 
-module.exports = require('maco')(windowCollectionView, React);
-
-function windowCollectionView(x) {
-  x.render = function () {
+class windowCollectionView extends React.Component {
+  constructor() {
+    super();
+    this.toWindowView = this.toWindowView.bind(this);
+    this.update = this.update.bind(this);
+  }
+  render() {
     var windows = windowCollectionModel.getWindows();
     if (windows.length === 0) return null;
 
-    return <div>{windows.map(toWindowView)}</div>;
+    return <div>{windows.map(this.toWindowView)}</div>;
   };
 
-  x.componentDidMount = function () {
-    windowCollectionModel.on('changed', update);
+  componentDidMount() {
+    windowCollectionModel.on('changed', this.update);
   };
 
-  x.componentWillUnmount = function() {
-    windowCollectionModel.off('changed', update);
+  componentWillUnmount() {
+    windowCollectionModel.off('changed', this.update);
   };
 
-  function toWindowView(windowViewModel, idx) {
+  toWindowView(windowViewModel, idx) {
     return <NodeListView viewModel={windowViewModel} key={idx} />;
   }
 
-  function update() {
-    x.forceUpdate();
+  update() {
+    this.forceUpdate();
   }
 }
+
+export default windowCollectionView;

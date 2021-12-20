@@ -1,26 +1,30 @@
-import scene from './store/scene.js';
 import React from 'react';
 import hoverModel from './store/hover.js';
 
-module.exports = require('maco')(hoverInfo, React);
+class hoverInfo extends React.Component {
+  constructor() {
+    super();
+    this.updateView = this.updateView.bind(this);
+  }
 
-function hoverInfo(x) {
-  var hoverTemplate = null;
+  hoverTemplate = null;
 
-  x.render = function render() {
-    return hoverTemplate;
+  render() {
+    return this.hoverTemplate;
   };
 
-  x.componentDidMount = function() {
-    hoverModel.on('changed', updateView);
+  componentDidMount() {
+    hoverModel.on('changed', this.updateView);
   };
 
-  x.componentWillUnmount = function () {
-    hoverModel.off('changed', updateView);
+  componentWillUnmount() {
+    hoverModel.off('changed', this.updateView);
   };
 
-  function updateView(viewTemplate) {
-    hoverTemplate = viewTemplate;
-    x.forceUpdate();
+  updateView(viewTemplate) {
+    this.hoverTemplate = viewTemplate;
+    this.forceUpdate();
   }
 }
+
+export default hoverInfo;
