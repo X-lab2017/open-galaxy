@@ -13,20 +13,17 @@ class RepoDetails extends React.Component {
     super();
   this.state = {
     currentRepoFullname: null,
-    contributorsActivityEvolutionDataUrl: null,
+    // contributorsActivityEvolutionDataUrl: null,
     projectNetworkData: null,
     contributorNetworkData: null,
   };
     this.updateView = this.updateView.bind(this);
   }
 
-// }
-// function RepoDetails(x) {
-
   render() {
     if (
       !this.state.currentRepoFullname ||
-      !this.state.contributorsActivityEvolutionDataUrl ||
+      // !this.state.contributorsActivityEvolutionDataUrl ||
       !this.state.projectNetworkData ||
       !this.state.contributorNetworkData
     )
@@ -34,19 +31,19 @@ class RepoDetails extends React.Component {
 
     return (
       <div>
-        <div className="cool-box contributors-activity-evolution-box">
-          <h3>{intl.get('CONTRIBUTOR_ACTIVITY_EVOLUTION')}</h3>
-          <DynamicBar
-            theme="dark"
-            width={600}
-            height={600}
-            barNumber={20}
-            digitNumber={2}
-            duration={30}
-            dateLabelSize={30}
-            dataUrl={this.state.contributorsActivityEvolutionDataUrl}
-          />
-        </div>
+        {/* <div className="cool-box contributors-activity-evolution-box"> */}
+        {/*   <h3>{intl.get('CONTRIBUTOR_ACTIVITY_EVOLUTION')}</h3> */}
+        {/*   <DynamicBar */}
+        {/*     theme="dark" */}
+        {/*     width={600} */}
+        {/*     height={600} */}
+        {/*     barNumber={20} */}
+        {/*     digitNumber={2} */}
+        {/*     duration={30} */}
+        {/*     dateLabelSize={30} */}
+        {/*     dataUrl={this.state.contributorsActivityEvolutionDataUrl} */}
+        {/*   /> */}
+        {/* </div> */}
 
         <div className="cool-box two-networks-box">
           <div className="project-network-box">
@@ -79,8 +76,8 @@ class RepoDetails extends React.Component {
       .then((data) => {
         this.setState({
           currentRepoFullname: data.currentRepoFullname,
-          contributorsActivityEvolutionDataUrl:
-            data.contributorsActivityEvolutionDataUrl,
+          // contributorsActivityEvolutionDataUrl:
+          //   data.contributorsActivityEvolutionDataUrl,
           projectNetworkData: data.projectNetworkData,
           contributorNetworkData: data.contributorNetworkData,
         });
@@ -90,7 +87,7 @@ class RepoDetails extends React.Component {
         console.log(message);
         this.setState({
           currentRepoFullname: null,
-          contributorsActivityEvolutionDataUrl: null,
+          // contributorsActivityEvolutionDataUrl: null,
           projectNetworkData: null,
           contributorNetworkData: null,
         });
