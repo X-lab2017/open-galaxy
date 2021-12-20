@@ -31,6 +31,8 @@
   "HELP_BACKQUOTE": "backquote",
   "HELP_TOGGLE_DATA_SCREEN": "Toggle data screen",
 
+  "SteeringIndicator_HOW_TO_TURN_OFF": "Press <Space> to turn off the Steering mode",
+
   "ReposUsersTotal_REPOS": "Repos",
   "ReposUsersTotal_USERS": "Users",
   "MonthlyActiveReposAndUsers_TITLE": "Number of Active Repos and Users by Month",

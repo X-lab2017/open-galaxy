@@ -8,8 +8,6 @@ import ContributorNetwork from "./ContributorNetwork/ContributorNetwork.jsx";
 
 import intl from 'react-intl-universal';
 
-// module.exports = require("maco")(RepoDetails, React);
-
 class RepoDetails extends React.Component {
   constructor() {
     super();

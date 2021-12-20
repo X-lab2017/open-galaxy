@@ -1,7 +1,6 @@
 import React from 'react';
-export default require('maco').template(noWebGL, React);
 
-function noWebGL() {
+export default function noWebGL() {
   return (
   <div  className='container'>
     <h3 className='error'>Could not initialize WebGL</h3>
