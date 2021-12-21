@@ -37,6 +37,7 @@ Click [here](https://github.com/anvaka/pm#your-own-graphs) to see how to build y
 | `E`  | Roll left  |`F` | Fly down|
 | `L`  | Toggle links  | `Space` | Toggle steering |
 | `Shift`  | Fly faster  |  |  |
+  
 ![OpenGalaxy3D](/images/open_galaxy_3d.gif)
 
 # Architecture
