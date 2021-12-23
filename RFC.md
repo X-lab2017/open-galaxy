@@ -8,7 +8,7 @@ Open Galaxy has built a magnificent open source galaxy through visualization tec
 
 In the whole GitHub open source community, millions of developers and projects have already formed a kind of social network through various behaviors. Visualization technology can make this network more clearly show us.
 
-Therefore, we have made some improvements based on the open source project anvaka / PM, calculated the correlation degree between the project and developers through some algorithms, and then laid out the nodes through some gravitational layout algorithms.
+Therefore, we have made some improvements based on the open source project anvaka/pm, calculated the correlation degree between the project and developers through some algorithms, and then laid out the nodes through some gravitational layout algorithms.
 
 Due to the large order of magnitude, ordinary databases are difficult to meet our computing requirements, so we chose Nebula graph to help us build such a huge network.
 
