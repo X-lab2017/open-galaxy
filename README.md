@@ -46,7 +46,7 @@ The OpenGalaxy is a comprehensive project which uses graph database, graph algor
 
 * Project architecture
 
-![architecture](https://www.plantuml.com/plantuml/png/PLF1Rjim3BthAuZSiyjkEGmDsY4jCBHPtSEkj4tBMXJ9aEYbmT1_7qEfZOlvOfZlyJq-ohh9Z8ddepT3Z4m9dYOAE_JuUePjwaR7rF6So9WGUuBLhxN7LadGn3br17V820zXIBW2pD0xOJ91SdRa3MozXvtZ-xa57otq5x8BSEjTTnZZdCbSIYrcqNwaTlO8kuJJg5h1LjTcmdJGKfwAV1kPut43j-WxQPBA7YqzOpZ0oV48-qIMV6slmlSlBtlO2VU4vnLi6mZZky4pJR4aQIZzSHsfMUhpPpUbzSJeV8cI2xjuFehKbz-vIZuDWtU1IfnFij5MMOxJCe5LfiTpdBae1Ysz2mRLQnZPTVAA2MqLpDNqUdZ51_uQa6UPKOUlwGHM_6t1AkrAi5VypPZUmRgFfx3-feTWFxx2Q2-RySWk1lWvKpgRC0gklu0GP8t_4nPuj8Bhyh-_JZ6noTCL3BPY3qV5XBpepDBvzQxk-8TkpaZnOpPfBe5KmyWaox4siDY9aOay3RnMeDHWZu6ykQ7GNwx8Fm00)
+![architecture](http://gar2020.opensource-service.cn/umlrenderer/github/X-lab2017/open-galaxy?path=about/arch.uml)
 
 * Design of the main modules
   * For repo influence calculation, we use scala script on Spark to calculate the PageRank value of all repos during 2021 and import into Nebula graph database.
