@@ -5,7 +5,7 @@ node "X-lab Open Source Data Infra" as di
 note right: All GitHub log data in Clickhouse
 database "Nebula Graph" as ng
 node "Spark" as sp
-note bottom: Calculate PageRank with Pregel
+note bottom: Calculate HIN PageRank with Pregel
 node "Nebula HTTP Gateway" AS nhg
 node "Repo Data Service" as rds
 note bottom: Repo detail data service with Node.js
