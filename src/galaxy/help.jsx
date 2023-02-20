@@ -142,10 +142,10 @@ class help extends React.Component {
                 <code>L</code>
               </td>
               <td>{intl.get("HELP_TOGGLE_LINK")}</td>
-              <td>
-                <code>`({intl.get("HELP_BACKQUOTE")})</code>
-              </td>
-              <td>{intl.get("HELP_TOGGLE_DATA_SCREEN")}</td>
+              {/* <td> */}
+              {/*   <code>`({intl.get("HELP_BACKQUOTE")})</code> */}
+              {/* </td> */}
+              {/* <td>{intl.get("HELP_TOGGLE_DATA_SCREEN")}</td> */}
             </tr>
           </tbody>
         </table>
