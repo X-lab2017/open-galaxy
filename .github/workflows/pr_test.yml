@@ -47,15 +47,17 @@ jobs:
 
       - name: Setup node 14 env
         if: ${{ steps.regex-match.outputs.match != '' }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
+          cache: "yarn"
 
       - name: Build the website
         if: ${{ steps.regex-match.outputs.match != '' }}
         run: |
-          npm install
-          npm run build
+          git config --global url."https://github.com/".insteadOf git://github.com/
+          yarn install
+          yarn run build
 
       - name: Upload to OSS
         if: ${{ steps.regex-match.outputs.match != '' }}

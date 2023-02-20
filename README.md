@@ -1,275 +1,85 @@
-# Software Galaxies
+# OpenGalaxy
 
-This repository combines visualizations of major software package managers.
+> Who am I, where have I been, and where am I going?
 
-All visualizations are available here: http://anvaka.github.io/pm/#/
+In real society, people actually rely on their connection with others to determine their position. In the open source world of GitHub, various collaborative behaviors between developers and projects have also formed a huge social collaborative network.
 
-Please read [operating manual](https://github.com/anvaka/pm/tree/master/about#software-galaxies-documentation) -
-it is short and describes basic navigation principles.
+We can't answer the above profound philosophical three questions, but we want to let you see with your own eyes who you are, where have you been and where you are going in the open source world through this project.
 
-Repository was create for my talk at [CascadiaJS 2015](http://2015.cascadiajs.com/browser/)
+In this project we cleaned the log data of GitHub, abstracted it into a developer collaboration behavior model, and built the following huge GitHub collaboration galaxy. More technical details can be found in the architecture section.
+![OpenGalaxy2D](/images/open_galaxy_2d.jpg)
 
-**After conference update** - [**video**](https://www.youtube.com/watch?v=vZ6Yhlxv7Os) -
-[slides](http://anvaka.github.io/talks/cascadia2015/#/)
 
-Friends, you are awesome! I can't express how much I appreciate all your
-kind words and warm feedback. It really means a world for me. Thank you!
+What are you waiting for? Come and experience it! https://open-galaxy.x-lab.info/
 
-# Individual Visualizations
+# Install
 
-Each graph is indexed individually, and data is pushed to `gh-pages` branch
-of [galactic-data](https://github.com/anvaka/galactic-data).
+Some packages in this repository are old, `Node 14` MUST be used to start the project. [nvm](https://github.com/nvm-sh/nvm) is recommended to manage multiple versions of `Node` in your machine.
 
-<table>
-  <tbody>
-    <tr>
-      <td align="center">
-        <h3>Bower</h3>
-        <a href="http://anvaka.github.io/pm/#/galaxy/bower?l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/bower_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allbower">indexer</a> |
-        <a href="http://anvaka.github.io/pm/#/galaxy/bower?l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>PHP Composer</h3>
-        <a href="http://anvaka.github.io/pm/#/galaxy/composer?l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/composer_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allcomposer">indexer</a> |
-        <a href="http://anvaka.github.io/pm/#/galaxy/composer?l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>Ruby gems</h3>
-        <a href="http://anvaka.github.io/pm/#/galaxy/rubygems?l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/ruby_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allgems">indexer</a> |
-        <a href="http://anvaka.github.io/pm/#/galaxy/rubygems?l=1">demo</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <h3>npm</h3>
-        <a href="http://anvaka.github.io/pm/#/galaxy/npm?l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/npm_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allnpm">indexer</a> |
-        <a href="http://anvaka.github.io/pm/#/galaxy/npm?l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>Go</h3>
-        <a href="http://anvaka.github.io/pm/#/galaxy/gosearch?l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/go_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allgo">indexer</a> |
-        <a href="http://anvaka.github.io/pm/#/galaxy/gosearch?l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>R language</h3>
-        <a href="http://anvaka.github.io/pm/#/galaxy/cran?cx=-2482&cy=-5685&cz=-291&lx=0.2264&ly=-0.6790&lz=0.4330&lw=0.5480&ml=200&s=2.75&l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/cran_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allcran">indexer</a> |
-        <a href="http://anvaka.github.io/pm/#/galaxy/cran?cx=-2482&cy=-5685&cz=-291&lx=0.2264&ly=-0.6790&lz=0.4330&lw=0.5480&ml=200&s=2.75&l=1">demo</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <h3>Debian</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/debian?cx=-201&cy=-6170&cz=-6841&lx=0.5676&ly=-0.7456&lz=0.2400&lw=0.2536&ml=150&s=1.75&l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/debian_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/alldebian">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/debian?cx=-201&cy=-6170&cz=-6841&lx=0.5676&ly=-0.7456&lz=0.2400&lw=0.2536&ml=150&s=1.75&l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>Arch Linux</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/arch?cx=870&cy=-3968&cz=-2010&lx=0.7695&ly=-0.3554&lz=0.3109&lw=0.4299&ml=150&s=1.75&l=1&v=no-aur">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/archlinux_fly_first.png">
-        </a><br />
-        <a href="https://github.com/phiresky/crawl-arch">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/arch?cx=870&cy=-3968&cz=-2010&lx=0.7695&ly=-0.3554&lz=0.3109&lw=0.4299&ml=150&s=1.75&l=1&v=no-aur">demo</a>
-      </td>
-      <td align="center">
-        <h3>Arch Linux + AUR</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/arch?cx=870&cy=-3968&cz=-2010&lx=0.7695&ly=-0.3554&lz=0.3109&lw=0.4299&ml=150&s=1.75&l=1&v=including-aur">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/archlinux_aur_fly_first.png">
-        </a><br />
-        <a href="https://github.com/phiresky/crawl-arch">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/arch?cx=2655&cy=859&cz=7898&lx=0.2160&ly=0.0620&lz=0.8560&lw=0.4656&ml=150&s=1.75&l=1&v=including-aur">demo</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <h3>NuGet</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/nuget?l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/nuget_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allnuget">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/nuget?l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>Homebrew</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/brew?cx=-803&cy=-3622&cz=-1640&lx=0.3774&ly=-0.7360&lz=0.4338&lw=0.3573&ml=200&s=2.75&l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/brew_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allbrew">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/brew?cx=-803&cy=-3622&cz=-1640&lx=0.3774&ly=-0.7360&lz=0.4338&lw=0.3573&ml=200&s=2.75&l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>PyPI</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/python?cx=-2700&cy=377&cz=5622&lx=-0.0869&ly=-0.2315&lz=-0.0338&lw=0.9684&ml=150&s=1.75&l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/composer_fly_first.png">
-        </a><br />
-        <a href="https://github.com/anvaka/allpypi">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/python?cx=-2700&cy=377&cz=5622&lx=-0.0869&ly=-0.2315&lz=-0.0338&lw=0.9684&ml=150&s=1.75&l=1">demo</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <h3>Fedora</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/fedora?cx=1539&cy=409&cz=7141&lx=0.0164&ly=0.1453&lz=-0.0027&lw=0.9892&ml=150&s=1.75&l=1">
-          <img src="https://raw.githubusercontent.com/wiki/anvaka/pm/images/debian_fly_first.png">
-        </a><br />
-        <a href="https://github.com/shaded-enmity/allrpm">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/fedora?cx=1539&cy=409&cz=7141&lx=0.0164&ly=0.1453&lz=-0.0027&lw=0.9892&ml=150&s=1.75&l=1">demo</a>
-      </td>
-      <td align="center">
-        <h3>Rust Crates</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/crates?cx=6617&cy=467&cz=353&lx=0.0169&ly=0.7328&lz=0.0495&lw=0.6785&ml=200&s=1.75&l=1&v=2020-02-19T00-00-00Z">
-          <img src="https://i.imgur.com/vAPK5lT.png">
-        </a><br />
-        <a href="https://github.com/brandly/allcrates">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/crates?cx=6617&cy=467&cz=353&lx=0.0169&ly=0.7328&lz=0.0495&lw=0.6785&ml=200&s=1.75&l=1&v=2020-02-19T00-00-00Z">demo</a>
-      </td>
-      <td align="center">
-        <h3>Elm</h3>
-        <a href="https://anvaka.github.io/pm/#/galaxy/elm?cx=-247&cy=-1794&cz=1804&lx=0.4062&ly=0.1564&lz=-0.3016&lw=0.8483&ml=150&s=1.75&l=1&v=2020-02-21T00-00-00Z">
-          <img src="https://i.imgur.com/44Sj8Js.png">
-        </a><br />
-        <a href="https://github.com/brandly/allelm">indexer</a> |
-        <a href="https://anvaka.github.io/pm/#/galaxy/elm?cx=-247&cy=-1794&cz=1804&lx=0.4062&ly=0.1564&lz=-0.3016&lw=0.8483&ml=150&s=1.75&l=1&v=2020-02-21T00-00-00Z">demo</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-# local development
-
-```
-git clone https://github.com/anvaka/pm
-cd pm
-npm i
-npm start
+```bash
+git config --global url."https://github.com/".insteadOf git://github.com/ # one package uses a no longer supported url, this is a fix
+git clone https://github.com/X-lab2017/open-galaxy.git
+cd open-galaxy
+yarn install
+yarn start # This will start local development sever with auto-rebuild.
 ```
 
-This will start local development sever with auto-rebuild.
+### Build your own graphs
 
-## Your own graphs
+Click [here](https://github.com/anvaka/pm#your-own-graphs) to see how to build your own graphs.
 
-This section has detailed instructions about how to use the tool
-with your own graphs. Before you read any further, if your graph
-is smaller than 10k nodes, consider using [ngraph.pixel](https://github.com/anvaka/ngraph.pixel)
-or [VivaGraph](https://github.com/anvaka/VivaGraphJS) both should
-be able to provide interactive layout.
+### Explore OpenGalaxy
 
-If you have an interesting graph but don't have JavaScript experience,
-please feel free to reach out to me and I'll try to make visualization
-for you (my email is `anvaka@gmail.com`).
+|    |    |    |   |
+|---:|:---|---:|---|
+| `W`  | Move forward  | `Up` |Rotate up|
+| `S`  | Move backward  | `Down`  |Rotate down |
+| `A`  | Move left  |`Left`|Rotate left|
+| `D`  | Move right  |`Right` | Rotate right|
+| `Q`  | Roll right  |`R` | Fly up|
+| `E`  | Roll left  |`F` | Fly down|
+| `L`  | Toggle links  | `Space` | Toggle steering |
+| `Shift`  | Fly faster  |  |  |
 
-Otherwise, if you want to hack on your own, please keep reading.
+![OpenGalaxy3D](/images/open_galaxy_3d.gif)
 
-### Graph
+# Architecture
 
-First, you will need a graph in [ngraph.graph](https://github.com/anvaka/ngraph.graph)
-format. The `ngraph.graph` has detailed documentation about how to create graph,
-but it also has several loaders from popular graph formats (e.g. [dot](https://github.com/anvaka/ngraph.fromdot),
-[gexf](https://github.com/anvaka/ngraph.gexf))
+The OpenGalaxy is a comprehensive project which uses graph database, graph algorithm and graph visualization tools for developers to explore the oepn source world.
 
-### Layout
+* Project architecture
 
-Now that you have a graph we need to compute the layout.
+![architecture](http://gar2020.opensource-service.cn/umlrenderer/github/X-lab2017/open-galaxy?path=about/arch.uml)
 
-If your graph is smaller than 200k nodes, consider using [ngraph.offline.layout](https://github.com/anvaka/ngraph.offline.layout). This module was
-created exactly for the purpose of the `pm` project, it is well documented, and
-should be easy to get started with. You can also read `layout.js` of `all[gems|go|bower]`
-packages to see more examples.
+* Design of the main modules
+  * For repo influence calculation, we use scala script on Spark to calculate the PageRank value of all repos during 2021 and import into Nebula graph database.
+  * For repo data service, we use Node.js online server to query repo detail data like most related repos and developers network on GitHub from Nebula Graph database directly.
+  * For offline graph service, we export repo data from Nebula Graph database by Node.js client and use ngraph lib to calculate the galaxy 3d layout and store the result onto online static storage service.
+  * For OpenGalaxy, we use galaxy layout data and pm to generate our OpenGalaxy and customize to add our own data like repo details panel. The repo detail panel will query data from repo data service which will query data directly from Nebula Graph database.
 
-If your graph is much larger than 200k nodes, then consider using
-[ngraph.native](https://github.com/anvaka/ngraph.native) - this module
-is harder to work with (as it requires C++ knowledge), but it is much
-faster.
-
-The secret GitHub visualization is using [ngraph.native](https://github.com/anvaka/ngraph.native).
-
-### Data format
-
-Once layout is computed, we are ready to visualize. Just save the graph using
-[ngraph.tobinary](https://github.com/anvaka/ngraph.tobinary#ngraphtobinary)
-and store it along with latest positions file (produced by layout) into a folder.
-
-The folder structure should look like this:
-
-```
-.
-└── my-pm-data-server
-    └── my-graph
-        ├── manifest.json
-        └── version-1
-            ├── labels.json         /* this file is produced by ngraph.tobinary */
-            ├── links.bin           /* this file is produced by ngraph.tobinary */
-            └── positions.bin       /* this file is produced by ngraph.native   */
-```
-
-The file `manifest.json` describes what version of the graph are available and has the following
-content:
-
-``` json
-{
-  "all": ["version-1"],
-  "last": "version-1"
-}
-```
-
-Inside `my-pm-data-server` we launch a web server. I personally prefer [http-server](https://www.npmjs.com/package/http-server). Once it is installed globally (`npm i http-server -g`), you can launch it like this:
-
-```
-http-server --cors -p 9090
-```
-
-This will start a local data server at `http://127.0.0.1:9090/`
-
-Update the [config.js](https://github.com/anvaka/pm/blob/master/src/config.js) in
-this repository to point to your data server, and your graph should be accessible at
-
-http://127.0.0.1:8081/#/galaxy/my-graph
+* Internal and external dependencies
+  * Data infra: [Clickhouse](https://github.com/ClickHouse/ClickHouse).
+  * Spark data process: [Spark & Pregel](https://github.com/apache/spark).
+  * Offline data service: [Nebula Node.js client](https://github.com/vesoft-inc/nebula-node), [ngraph layout lib](https://github.com/anvaka/ngraph.offline.layout),
+  * Repo Data service: [Nebula Node.js client](https://github.com/vesoft-inc/nebula-node), [egg.js](https://github.com/eggjs/egg).
+  * OpenGalaxy: [ngraph pm](https://github.com/anvaka/pm).
 
 
-#### Note
-The [`galactic-data`](https://github.com/anvaka/galactic-data/tree/gh-pages/npm) follows the same
-data structure as described above. Use it for the reference if you need an example
+# Contributing
 
-# The secret visualization
+There are many ways in which you can participate in this project, for example:
 
-The last shown visualization was secret GitHub followers visualization.
-It shows all GitHub users who has more than two followers.
+- Find a issue to join
+- Submit bugs and feature requests by issues
+- Help us fix typo
+- Translation
+...
 
-The visualization has more than 1,100,000 nodes, and renders
-at 60 fps when flying around. The FPS drops when you hover-over
-nodes to 20-30, This is because we are doing hit-testing,
-to find what's under cursor.
 
-With this many nodes, it runs well in the browser. Unfortunately
-it requires more than 1GB of RAM. Which may or may not crash
-your phone browser - sorry about this.
+# License
 
-With all warnings said, here are the links:
-* Indexed by [allgithub](https://github.com/anvaka/allgithub)
-* [Live demo](http://anvaka.github.io/pm/#/galaxy/github?l=1)
+Copyright (c) 2021 X-lab2017.
 
-# Feedback
+Licensed under the [Apache License Version 2.0.](./LICENSE)
 
-Please do not hesitate to provide your feedback or bug fixes.
-Even if it is something small like fixing a typo - I'd be glad to
-hear from you!
+**NOTICE:** Some of OpenGalaxy's code is derived from [anvaka/pm](https://github.com/anvaka/pm) whose copyright and license can be found at the end of [LICENSE](./LICENSE) file.

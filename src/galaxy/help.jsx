@@ -11,14 +11,26 @@ import appEvents from './service/appEvents.js';
 import Key from './utils/key.js';
 import intl from 'react-intl-universal';
 
-export default require('maco')(help, React);
 
 var helpWasShown = false;
 
-function help(x) {
-  var graphDownloaded = false;
+class help extends React.Component {
+  constructor() {
+    super();
+    this.showHelpIfNeeded = this.showHelpIfNeeded.bind(this);
+    this.toggleHelp = this.toggleHelp.bind(this);
+    this.resetHelp = this.resetHelp.bind(this);
+    this.handlekey = this.handlekey.bind(this);
+    this.handlewheel = this.handlewheel.bind(this);
+    this.listenToKeys = this.listenToKeys.bind(this);
+    this.listenToWheel = this.listenToWheel.bind(this);
+    this.releaseKeyListener = this.releaseKeyListener.bind(this);
+    this.releaseWheel = this.releaseWheel.bind(this);
+  }
+  
+  graphDownloaded = false;
 
-  x.render = function() {
+  render() {
     if (window.orientation !== undefined) {
       // no need to show help on orientation enabled devices
       return null;
@@ -29,114 +41,156 @@ function help(x) {
       return null;
     }
 
-    if (!graphDownloaded) {
+    if (!this.graphDownloaded) {
       // Show help only after all is downloaded
       return null;
     }
 
     return (
-        <div className='navigation-help'>
-          <h3>{intl.get('HELP_TITLE')}</h3>
-            <table><tbody>
-      <tr>
-        <td colSpan="2"><code className='important-key'>{intl.get('HELP_MOUSE_WHEEL')}</code></td>
-        <td colSpan="2">{intl.get('HELP_SHOW_GUIDE')}</td>
-      </tr>
-      <tr className='spacer-row'>
-        <td colSpan='2'><code className='important-key' >{intl.get('HELP_ANY_KEY')}</code></td>
-        <td colSpan='2'>{intl.get('HELP_HIDE_GUIDE')}</td>
-      </tr>
-      <tr>
-      <td><code>W</code></td>
-      <td>{intl.get('HELP_MOVE_FORWARD')}</td>
-      <td><code>Up</code></td>
-      <td>{intl.get('HELP_ROTATE_UP')}</td>
-      </tr>
-      <tr>
-      <td><code>S</code></td>
-      <td>{intl.get('HELP_MOVE_BACKWARD')}</td>
-      <td><code>Down</code></td>
-      <td>{intl.get('HELP_ROTATE_DOWN')}</td>
-      </tr>
-      <tr>
-      <td><code>A</code></td>
-      <td>{intl.get('HELP_MOVE_LEFT')}</td>
-      <td><code>Left</code></td>
-      <td>{intl.get('HELP_ROTATE_LEFT')}</td>
-      </tr>
-      <tr>
-      <td><code>D</code></td>
-      <td>{intl.get('HELP_MOVE_RIGHT')}</td>
-      <td><code>Right</code></td>
-      <td>{intl.get('HELP_ROTATE_RIGHT')}</td>
-      </tr>
-      <tr>
-      <td><code>Q</code></td>
-      <td>{intl.get('HELP_ROLL_RIGHT')}</td>
-      <td><code>R</code></td>
-      <td>{intl.get('HELP_FLY_UP')}</td>
-      </tr>
-      <tr>
-      <td><code>E</code></td>
-      <td>{intl.get('HELP_ROLL_LEFT')}</td>
-      <td><code>F</code></td>
-      <td>{intl.get('HELP_FLY_DOWN')}</td>
-      </tr>
-      <tr>
-      <td><code>shift</code></td>
-      <td>{intl.get('HELP_MOVE_FASTER')}</td>
-      <td><code>Space</code></td>
-      <td>{intl.get('HELP_TOGGLE_STEERING')}</td>
-      </tr>
-      <tr>
-      <td><code>L</code></td>
-      <td>{intl.get('HELP_TOGGLE_LINK')}</td>
-      <td><code>`({intl.get('HELP_BACKQUOTE')})</code></td>
-      <td>{intl.get('HELP_TOGGLE_DATA_SCREEN')}</td>
-      </tr>
-      </tbody></table>
-        </div>
-        );
+      <div className="navigation-help">
+        <h3>{intl.get("HELP_TITLE")}</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td colSpan="2">
+                <code className="important-key">
+                  {intl.get("HELP_MOUSE_WHEEL")}
+                </code>
+              </td>
+              <td colSpan="2">{intl.get("HELP_SHOW_GUIDE")}</td>
+            </tr>
+            <tr className="spacer-row">
+              <td colSpan="2">
+                <code className="important-key">
+                  {intl.get("HELP_ANY_KEY")}
+                </code>
+              </td>
+              <td colSpan="2">{intl.get("HELP_HIDE_GUIDE")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>W</code>
+              </td>
+              <td>{intl.get("HELP_MOVE_FORWARD")}</td>
+              <td>
+                <code>Up</code>
+              </td>
+              <td>{intl.get("HELP_ROTATE_UP")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>S</code>
+              </td>
+              <td>{intl.get("HELP_MOVE_BACKWARD")}</td>
+              <td>
+                <code>Down</code>
+              </td>
+              <td>{intl.get("HELP_ROTATE_DOWN")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>A</code>
+              </td>
+              <td>{intl.get("HELP_MOVE_LEFT")}</td>
+              <td>
+                <code>Left</code>
+              </td>
+              <td>{intl.get("HELP_ROTATE_LEFT")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>D</code>
+              </td>
+              <td>{intl.get("HELP_MOVE_RIGHT")}</td>
+              <td>
+                <code>Right</code>
+              </td>
+              <td>{intl.get("HELP_ROTATE_RIGHT")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Q</code>
+              </td>
+              <td>{intl.get("HELP_ROLL_RIGHT")}</td>
+              <td>
+                <code>R</code>
+              </td>
+              <td>{intl.get("HELP_FLY_UP")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>E</code>
+              </td>
+              <td>{intl.get("HELP_ROLL_LEFT")}</td>
+              <td>
+                <code>F</code>
+              </td>
+              <td>{intl.get("HELP_FLY_DOWN")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>shift</code>
+              </td>
+              <td>{intl.get("HELP_MOVE_FASTER")}</td>
+              <td>
+                <code>Space</code>
+              </td>
+              <td>{intl.get("HELP_TOGGLE_STEERING")}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>L</code>
+              </td>
+              <td>{intl.get("HELP_TOGGLE_LINK")}</td>
+              {/* <td> */}
+              {/*   <code>`({intl.get("HELP_BACKQUOTE")})</code> */}
+              {/* </td> */}
+              {/* <td>{intl.get("HELP_TOGGLE_DATA_SCREEN")}</td> */}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
     };
 
-  x.componentDidMount = function () {
+  componentDidMount() {
     if (window.orientation !== undefined) return;
-    appEvents.graphDownloaded.on(showHelpIfNeeded);
-    appEvents.downloadGraphRequested.on(resetHelp);
-    appEvents.toggleHelp.on(toggleHelp);
+    appEvents.graphDownloaded.on(this.showHelpIfNeeded);
+    appEvents.downloadGraphRequested.on(this.resetHelp);
+    appEvents.toggleHelp.on(this.toggleHelp);
 
-    listenToKeys();
-    listenToWheel();
+    this.listenToKeys();
+    this.listenToWheel();
   }
 
-  x.componentWillUnmount = function () {
+  componentWillUnmount() {
     if (window.orientation !== undefined) return;
-    appEvents.graphDownloaded.off(showHelpIfNeeded);
-    appEvents.downloadGraphRequested.off(resetHelp);
-    appEvents.toggleHelp.off(toggleHelp);
+    appEvents.graphDownloaded.off(this.showHelpIfNeeded);
+    appEvents.downloadGraphRequested.off(this.resetHelp);
+    appEvents.toggleHelp.off(this.toggleHelp);
 
-    releaseKeyListener();
-    releaseWheel();
+    this.releaseKeyListener();
+    this.releaseWheel();
   }
 
-  function showHelpIfNeeded() {
+  showHelpIfNeeded() {
     if (helpWasShown) return;
-    graphDownloaded = true;
+    this.graphDownloaded = true;
 
-    x.forceUpdate();
+    this.forceUpdate();
   }
 
-  function toggleHelp() {
+  toggleHelp() {
     helpWasShown = !helpWasShown;
-    x.forceUpdate();
+    this.forceUpdate();
   }
 
-  function resetHelp() {
-    graphDownloaded = false;
-    x.forceUpdate();
+  resetHelp() {
+    this.graphDownloaded = false;
+    this.forceUpdate();
   }
 
-  function handlekey(e) {
+  handlekey(e) {
     if (Key.isModifier(e)) {
       // ignore modifiers
       return;
@@ -145,32 +199,34 @@ function help(x) {
     helpWasShown = true;
 
     if (needsUpdate) {
-      x.forceUpdate();
+      this.forceUpdate();
     }
   }
 
-  function handlewheel(e) {
+  handlewheel(e) {
     // only show when used on scene
     if (e.target && e.target.nodeName === 'CANVAS') {
       helpWasShown = false;
-      x.forceUpdate();
+      this.forceUpdate();
       appEvents.focusScene.fire();
     }
   }
 
-  function listenToKeys() {
-    document.body.addEventListener('keydown', handlekey);
+  listenToKeys() {
+    document.body.addEventListener('keydown', this.handlekey);
   }
 
-  function listenToWheel() {
-    document.body.addEventListener('wheel', handlewheel, true);
+  listenToWheel() {
+    document.body.addEventListener('wheel', this.handlewheel, true);
   }
 
-  function releaseKeyListener() {
-    document.body.removeEventListener('keydown', handlekey, true);
+  releaseKeyListener() {
+    document.body.removeEventListener('keydown', this.handlekey, true);
   }
 
-  function releaseWheel() {
-    document.body.removeEventListener('wheel', handlewheel, true);
+  releaseWheel() {
+    document.body.removeEventListener('wheel', this.handlewheel, true);
   }
 }
+
+export default help;
