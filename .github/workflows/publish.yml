@@ -16,7 +16,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup node 14 env
-        if: ${{ steps.regex-match.outputs.match != '' }}
         uses: actions/setup-node@v3
         with:
           node-version: '14'
