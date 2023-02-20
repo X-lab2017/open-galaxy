@@ -6,8 +6,9 @@ In real society, people actually rely on their connection with others to determi
 
 We can't answer the above profound philosophical three questions, but we want to let you see with your own eyes who you are, where have you been and where you are going in the open source world through this project.
 
-In this project we cleaned the log data of GitHub, abstracted it into a developer collaboration behavior model, and built the following huge GitHub collaboration galaxy. More technical details can be found in the architecture section.
-![OpenGalaxy2D](/images/open_galaxy_2d.jpg)
+In this project we cleaned the log data of GitHub, abstracted it into a developer collaboration behavior model, and built the following huge GitHub collaboration galaxy.
+
+![OpenGalaxy2D](https://user-images.githubusercontent.com/32434520/220116878-31df8448-5127-4c33-a82e-b8c840e132ba.jpg)
 
 
 What are you waiting for? Come and experience it! https://open-galaxy.x-lab.info/
@@ -41,39 +42,17 @@ Click [here](https://github.com/anvaka/pm#your-own-graphs) to see how to build y
 | `L`  | Toggle links  | `Space` | Toggle steering |
 | `Shift`  | Fly faster  |  |  |
 
-![OpenGalaxy3D](/images/open_galaxy_3d.gif)
-
-# Architecture
-
-The OpenGalaxy is a comprehensive project which uses graph database, graph algorithm and graph visualization tools for developers to explore the oepn source world.
-
-* Project architecture
-
-![architecture](http://gar2020.opensource-service.cn/umlrenderer/github/X-lab2017/open-galaxy?path=about/arch.uml)
-
-* Design of the main modules
-  * For repo influence calculation, we use scala script on Spark to calculate the PageRank value of all repos during 2021 and import into Nebula graph database.
-  * For repo data service, we use Node.js online server to query repo detail data like most related repos and developers network on GitHub from Nebula Graph database directly.
-  * For offline graph service, we export repo data from Nebula Graph database by Node.js client and use ngraph lib to calculate the galaxy 3d layout and store the result onto online static storage service.
-  * For OpenGalaxy, we use galaxy layout data and pm to generate our OpenGalaxy and customize to add our own data like repo details panel. The repo detail panel will query data from repo data service which will query data directly from Nebula Graph database.
-
-* Internal and external dependencies
-  * Data infra: [Clickhouse](https://github.com/ClickHouse/ClickHouse).
-  * Spark data process: [Spark & Pregel](https://github.com/apache/spark).
-  * Offline data service: [Nebula Node.js client](https://github.com/vesoft-inc/nebula-node), [ngraph layout lib](https://github.com/anvaka/ngraph.offline.layout),
-  * Repo Data service: [Nebula Node.js client](https://github.com/vesoft-inc/nebula-node), [egg.js](https://github.com/eggjs/egg).
-  * OpenGalaxy: [ngraph pm](https://github.com/anvaka/pm).
-
+![OpenGalaxy3D](https://user-images.githubusercontent.com/32434520/220118178-42017202-53a3-40ac-9f6c-96e83f4843ac.gif)
 
 # Contributing
 
 There are many ways in which you can participate in this project, for example:
 
-- Find a issue to join
+- Find an issue to join
 - Submit bugs and feature requests by issues
 - Help us fix typo
 - Translation
-...
+- ...
 
 
 # License
