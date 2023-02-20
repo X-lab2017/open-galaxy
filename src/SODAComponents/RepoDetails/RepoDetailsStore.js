@@ -1,9 +1,9 @@
-import appEvents from "../../galaxy/service/appEvents.js";
 import eventify from "ngraph.events";
+import regeneratorRuntime from "regenerator-runtime"; // see https://stackoverflow.com/a/70933339/10369621
+
+import appEvents from "../../galaxy/service/appEvents.js";
 import scene from "../../galaxy/store/scene.js";
 import request from "../../galaxy/service/request.js";
-
-export default RepoDetailsStore();
 
 function RepoDetailsStore() {
   var api = {
@@ -27,24 +27,20 @@ function RepoDetailsStore() {
 
     let currentRepoFullname = scene.getNodeInfo(currentNodeId).name;
 
-//     let contributorsActivityEvolutionDataUrl = `https://hypertrons-oss.x-lab.info/opengalaxy-mock-data/contributors-activity-evolution/data_${
-//       currentNodeId % 8
-//     }.csv`;
-
-    let projectNetworkDataUrl = `https://open-galaxy-backend.x-lab.info:8443/repo/repo_network/${currentRepoFullname}`;
+    let projectNetworkDataUrl = `https://oss.x-lab.info/open_digger/github/${currentRepoFullname}/repo_network.json`;
     let projectNetworkData = await request(projectNetworkDataUrl, {
       responseType: "json",
     });
     if (projectNetworkData.hasOwnProperty("error")) {
-      throw(`"${currentRepoFullname}": ${projectNetworkData.error}`);
+      throw `"${currentRepoFullname}": ${projectNetworkData.error}`;
     }
 
-    let contributorNetworkDataUrl = `https://open-galaxy-backend.x-lab.info:8443/repo/developer_network/${currentRepoFullname}`;
+    let contributorNetworkDataUrl = `https://oss.x-lab.info/open_digger/github/${currentRepoFullname}/developer_network.json`;
     let contributorNetworkData = await request(contributorNetworkDataUrl, {
       responseType: "json",
     });
     if (contributorNetworkData.hasOwnProperty("error")) {
-      throw(`"${currentRepoFullname}": ${contributorNetworkData.error}`);
+      throw `"${currentRepoFullname}": ${contributorNetworkData.error}`;
     }
 
     return {
@@ -55,3 +51,5 @@ function RepoDetailsStore() {
     };
   }
 }
+
+export default RepoDetailsStore();

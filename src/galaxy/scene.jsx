@@ -14,7 +14,7 @@ import createNativeRenderer from "./native/renderer.js";
 import createKeyboardBindings from "./native/sceneKeyboardBinding.js";
 
 // SODA related components
-import GitHubScreen from "../SODAComponents/GitHubScreen/GitHubScreen.jsx";
+// import GitHubScreen from "../SODAComponents/GitHubScreen/GitHubScreen.jsx";
 import RepoDetails from '../SODAComponents/RepoDetails/RepoDetails.jsx';
 
 import LocaleSelector from './locale/LocaleSelector.jsx';
@@ -43,7 +43,7 @@ class scene extends React.Component {
         <div ref="graphContainer" className="graph-full-size">
           {/* SODA related components */}
           {/* 放到这个位置是为了让GitHubScreen里面的键盘事件也在container作用范围内 */}
-          <GitHubScreen />
+          {/* <GitHubScreen /> */}
         </div>
         <RepoDetails />
         <HoverInfo />
