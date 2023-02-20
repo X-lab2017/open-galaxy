@@ -11,22 +11,25 @@ In this project we cleaned the log data of GitHub, abstracted it into a develope
 
 
 What are you waiting for? Come and experience it! https://open-galaxy.x-lab.info/
+
 # Install
 
 Some packages in this repository are old, `Node 14` MUST be used to start the project. [nvm](https://github.com/nvm-sh/nvm) is recommended to manage multiple versions of `Node` in your machine.
 
-```
+```bash
+git config --global url."https://github.com/".insteadOf git://github.com/ # one package uses a no longer supported url, this is a fix
 git clone https://github.com/X-lab2017/open-galaxy.git
 cd open-galaxy
 yarn install
-yarn start
+yarn start # This will start local development sever with auto-rebuild.
 ```
 
-This will start local development sever with auto-rebuild.
 ### Build your own graphs
+
 Click [here](https://github.com/anvaka/pm#your-own-graphs) to see how to build your own graphs.
 
 ### Explore OpenGalaxy
+
 |    |    |    |   |
 |---:|:---|---:|---|
 | `W`  | Move forward  | `Up` |Rotate up|
@@ -63,6 +66,7 @@ The OpenGalaxy is a comprehensive project which uses graph database, graph algor
 
 
 # Contributing
+
 There are many ways in which you can participate in this project, for example:
 
 - Find a issue to join
@@ -79,4 +83,3 @@ Copyright (c) 2021 X-lab2017.
 Licensed under the [Apache License Version 2.0.](./LICENSE)
 
 **NOTICE:** Some of OpenGalaxy's code is derived from [anvaka/pm](https://github.com/anvaka/pm) whose copyright and license can be found at the end of [LICENSE](./LICENSE) file.
-
