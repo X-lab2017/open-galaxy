@@ -1,29 +1,29 @@
 import React from "react";
+import intl from "react-intl-universal";
+
 import detailModel from "./RepoDetailsStore.js";
 import "./RepoDetails.less";
+import Graph from "./Graph.jsx";
 
-import DynamicBar from "./DynamicBar/DynamicBar.jsx";
-import ProjectNetwork from "./ProjectNetwork/ProjectNetwork.jsx";
-import ContributorNetwork from "./ContributorNetwork/ContributorNetwork.jsx";
-
-import intl from 'react-intl-universal';
+const graphStyle = {
+  width: "320px",
+  height: "360px",
+};
 
 class RepoDetails extends React.Component {
   constructor() {
     super();
-  this.state = {
-    currentRepoFullname: null,
-    // contributorsActivityEvolutionDataUrl: null,
-    projectNetworkData: null,
-    contributorNetworkData: null,
-  };
+    this.state = {
+      currentRepoFullname: null,
+      projectNetworkData: null,
+      contributorNetworkData: null,
+    };
     this.updateView = this.updateView.bind(this);
   }
 
   render() {
     if (
       !this.state.currentRepoFullname ||
-      // !this.state.contributorsActivityEvolutionDataUrl ||
       !this.state.projectNetworkData ||
       !this.state.contributorNetworkData
     )
@@ -31,44 +31,34 @@ class RepoDetails extends React.Component {
 
     return (
       <div>
-        {/* <div className="cool-box contributors-activity-evolution-box"> */}
-        {/*   <h3>{intl.get('CONTRIBUTOR_ACTIVITY_EVOLUTION')}</h3> */}
-        {/*   <DynamicBar */}
-        {/*     theme="dark" */}
-        {/*     width={600} */}
-        {/*     height={600} */}
-        {/*     barNumber={20} */}
-        {/*     digitNumber={2} */}
-        {/*     duration={30} */}
-        {/*     dateLabelSize={30} */}
-        {/*     dataUrl={this.state.contributorsActivityEvolutionDataUrl} */}
-        {/*   /> */}
-        {/* </div> */}
-
         <div className="cool-box two-networks-box">
           <div className="project-network-box">
-            <h3>{intl.get('PROJECT_CORRELATION_NETWORK')}</h3>
-            <ProjectNetwork
-              currentNode={this.state.currentRepoFullname}
+            <h3>{intl.get("PROJECT_CORRELATION_NETWORK")}</h3>
+            <Graph
               data={this.state.projectNetworkData}
+              style={graphStyle}
+              focusedNodeID={this.state.currentRepoFullname}
             />
           </div>
           <div className="contributor-network-box">
-            <h3>{intl.get('CONTRIBUTOR_CORRELATION_NETWORK')}</h3>
-            <ContributorNetwork data={this.state.contributorNetworkData} />
+            <h3>{intl.get("CONTRIBUTOR_CORRELATION_NETWORK")}</h3>
+            <Graph
+              data={this.state.contributorNetworkData}
+              style={graphStyle}
+            />
           </div>
         </div>
       </div>
     );
-  };
+  }
 
   componentDidMount() {
     detailModel.on("changed", this.updateView);
-  };
+  }
 
   componentWillUnmount() {
     detailModel.off("changed", this.updateView);
-  };
+  }
 
   updateView() {
     detailModel
@@ -76,8 +66,6 @@ class RepoDetails extends React.Component {
       .then((data) => {
         this.setState({
           currentRepoFullname: data.currentRepoFullname,
-          // contributorsActivityEvolutionDataUrl:
-          //   data.contributorsActivityEvolutionDataUrl,
           projectNetworkData: data.projectNetworkData,
           contributorNetworkData: data.contributorNetworkData,
         });
@@ -87,7 +75,6 @@ class RepoDetails extends React.Component {
         console.log(message);
         this.setState({
           currentRepoFullname: null,
-          // contributorsActivityEvolutionDataUrl: null,
           projectNetworkData: null,
           contributorNetworkData: null,
         });
