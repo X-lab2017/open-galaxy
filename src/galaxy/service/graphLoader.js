@@ -67,7 +67,8 @@ function loadGraph(name, progress) {
 
   function setManifest(response) {
     manifest = response;
-    var version = getFromAppConfig(manifest) || manifest.last;
+    // var version = getFromAppConfig(manifest) || manifest.last;
+    const version = 'v2'; // hardcode the data version (temporarily )
     if (manifest.endpoint) {
       // the endpoint is overridden. Since we trust manifest endpoint, we also
       // trust overridden endpoint:
