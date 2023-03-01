@@ -9,6 +9,8 @@ import getBaseNodeViewModel from '../store/baseNodeViewModel.js';
 
 import eventify from 'ngraph.events';
 
+import isRepoName from '../utils/isRepoName.js';
+
 export default nodeDetailsStore();
 
 function nodeDetailsStore() {
@@ -38,6 +40,13 @@ function nodeDetailsStore() {
     if (degreeVisible) {
       currentConnectionType = connectionType;
       var rootInfo = scene.getNodeInfo(id);
+      // ignore existing code to change `currentConnectType` or `connectionType`,
+      // however to use node name to decide whether it is 'in' or 'out'.
+      if (isRepoName(rootInfo.name)) {
+        currentConnectionType = connectionType = 'in';
+      } else {
+        currentConnectionType = connectionType = 'out';
+      }
       var conenctions = scene.getConnected(id, connectionType);
 
       var viewModel = new DegreeWindowViewModel(rootInfo.name, conenctions, connectionType, id);

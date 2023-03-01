@@ -2,10 +2,12 @@
   "PROJECT_CORRELATION_NETWORK": "项目协作网络",
   "CONTRIBUTOR_CORRELATION_NETWORK": "开发者协作网络",
   "PLAY_BUTTON": "播放",
-  "SEARCH_PLACEHOLDER": "请输入仓库名称",
+  "SEARCH_PLACEHOLDER": "请输入 GitHub 仓库名称或开发者 ID",
   "COUNT_FOR_RELATED_PROJECTS": "<span> 有 </span><strong> {count} </strong><span> 个关联项目 </span>",
+  "COUNT_FOR_RELATED_DEVELOPORS": "<span> 有 </span><strong> {count} </strong><span> 个关联开发者 </span>",
   "COUNT_FOR_SEARCH_MATCHES": "共有 <strong>{count}</strong><span> 个匹配项",
   "RELATED_PROJECT": "关联项目",
+  "RELATED_DEVELOPER": "关联开发者",
 
   "HELP_TITLE": "开源星系航行指南",
   "HELP_MOUSE_WHEEL": "鼠标滚轮",

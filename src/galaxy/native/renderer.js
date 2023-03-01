@@ -36,7 +36,7 @@ function sceneRenderer(container) {
 
   var communityColorMap = new Map();
   var colorMap = new Map([
-    ['r', 0x1a14ffff],
+    ['r', 0x1189ffff],
     ['u', 0xfff10cff],
     // ['5901', 0x00f7ffff],
     // ['1217', 0x1a14ffff],
