@@ -1,6 +1,8 @@
 import React from 'react';
 import formatNumber from '../utils/formatNumber.js';
 
+import isRepoName from '../utils/isRepoName.js';
+
 export default function windowTitle(props) {
   var item = props.viewModel;
   var image = '';
@@ -9,19 +11,22 @@ export default function windowTitle(props) {
   }
 
   return (
-      <div className='row'>
-        <div className='no-oveflow col-md-9 col-xs-9'>
+    <div className="row">
+      <div className="no-oveflow col-md-9 col-xs-9">
         {image}
-         <span id={item.id} className='node-focus'>
-            {item.name}
-          </span>
-        </div>
-        <div id={item.id} className='in-degree col-md-3 col-xs-3'>
-         {formatNumber(item.in)}
-        </div>
-        {/* <div id={item.id} className='out-degree col-md-3 col-xs-3'> */}
-        {/*  {formatNumber(item.out)} */}
-        {/* </div> */}
+        <span id={item.id} className="node-focus">
+          {item.name}
+        </span>
       </div>
+      {isRepoName(item.name) ? (
+        <div id={item.id} className="in-degree col-md-3 col-xs-3 text-center">
+          {formatNumber(item.in)}
+        </div>
+      ) : (
+        <div id={item.id} className="out-degree col-md-3 col-xs-3 text-center">
+          {formatNumber(item.out)}
+        </div>
+      )}
+    </div>
   );
 }

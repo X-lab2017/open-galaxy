@@ -2,6 +2,8 @@ import React from 'react';
 import resource from '../utils/resources.js';
 import intl from 'react-intl-universal';
 
+import isRepoName from "../utils/isRepoName.js";
+
 registerDataTemplates();
 
 class windowTitle extends React.Component {
@@ -46,12 +48,13 @@ function registerDataTemplates() {
             <span className="node-name node-focus" id={this.props.id}>
               {this.props.nodeName}
             </span>
-            {/* <span className={this.props.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}> */}
-            {/*   {this.props.degreeKindName} */}
-            {/* </span> */}
-            {intl.getHTML("COUNT_FOR_RELATED_PROJECTS", {
-              count: this.props.degreeNumber,
-            })}
+            {isRepoName(this.props.nodeName)
+              ? intl.getHTML("COUNT_FOR_RELATED_DEVELOPORS", {
+                  count: this.props.degreeNumber,
+                })
+              : intl.getHTML("COUNT_FOR_RELATED_PROJECTS", {
+                  count: this.props.degreeNumber,
+                })}
           </h4>
         );
       }

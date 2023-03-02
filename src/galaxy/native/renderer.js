@@ -36,14 +36,16 @@ function sceneRenderer(container) {
 
   var communityColorMap = new Map();
   var colorMap = new Map([
-    ['5901', 0x00f7ffff],
-    ['1217', 0x1a14ffff],
-    ['2272', 0x6e30ffff],
-    ['10476', 0x1189ffff],
-    ['3063', 0xde38ffff],
-    ['26766', 0xfff10cff],
-    ['7298', 0xff3254ff],
-    ['1314', 0x4dea00ff],
+    ['r', 0x1189ffff],
+    ['u', 0xfff10cff],
+    // ['5901', 0x00f7ffff],
+    // ['1217', 0x1a14ffff],
+    // ['2272', 0x6e30ffff],
+    // ['10476', 0x1189ffff],
+    // ['3063', 0xde38ffff],
+    // ['26766', 0xfff10cff],
+    // ['7298', 0xff3254ff],
+    // ['1314', 0x4dea00ff],
   ]);
   var defaultColor = 0xffffffff;
 
@@ -154,22 +156,22 @@ function sceneRenderer(container) {
     var colors = view.colors();
     nodeCommunity = [];
     for (var i = 0; i < labels.length; i++) {
-      if (!communityColorMap.has(labels[i].c)) {
-        var c = getColor(labels[i].c);
-        communityColorMap.set(labels[i].c, c);
+      if (!communityColorMap.has(labels[i].t)) {
+        var c = getColor(labels[i].t);
+        communityColorMap.set(labels[i].t, c);
       }
-      colorNode(i * 3, colors, communityColorMap.get(labels[i].c));
-      nodeCommunity.push(labels[i].c);
+      colorNode(i * 3, colors, communityColorMap.get(labels[i].t));
+      nodeCommunity.push(labels[i].t);
     }
     view.colors(colors);
     // set size
     var sizes = view.sizes();
-    var max = parseFloat(labels[0].pg);
+    var max = parseFloat(labels[0].or);
     for (var i = 1; i < labels.length; i++) {
-      if (max < parseFloat(labels[i].pg)) max = parseFloat(labels[i].pg);
+      if (max < parseFloat(labels[i].or)) max = parseFloat(labels[i].or);
     }
     for (var i = 0; i < sizes.length; ++i) {
-      sizes[i] = (180 * parseFloat(labels[i].pg) / max) + 8;
+      sizes[i] = (180 * parseFloat(labels[i].or) / max) + 8;
     }
     view.sizes(sizes);
   }

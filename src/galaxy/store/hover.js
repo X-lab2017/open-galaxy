@@ -4,6 +4,7 @@ import eventify from 'ngraph.events';
 import appEvents from '../service/appEvents.js';
 import scene from './scene.js';
 import getBaseNodeViewModel from './baseNodeViewModel.js';
+import isRepoName from '../utils/isRepoName.js';
 
 export default hoverStore();
 
@@ -43,10 +44,13 @@ function createDefaultTemplate(viewModel) {
   };
 
   return (
-      <div style={style} className='node-hover-tooltip'>
-        {viewModel.name}
-        <span className='in-degree'>{viewModel.inDegree}</span>
-        {/* <span className='out-degree'>{viewModel.outDegree}</span> */}
-      </div>
-    );
+    <div style={style} className="node-hover-tooltip">
+      {viewModel.name}
+      {isRepoName(viewModel.name) ? (
+        <span className="in-degree">{viewModel.inDegree}</span>
+      ) : (
+        <span className="out-degree">{viewModel.outDegree}</span>
+      )}
+    </div>
+  );
 }

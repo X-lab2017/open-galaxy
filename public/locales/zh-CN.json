@@ -1,12 +1,13 @@
 {
   "PROJECT_CORRELATION_NETWORK": "项目协作网络",
-  "CONTRIBUTOR_CORRELATION_NETWORK": "贡献者协作网络",
-  "CONTRIBUTOR_ACTIVITY_EVOLUTION": "贡献者活跃度演进榜",
+  "CONTRIBUTOR_CORRELATION_NETWORK": "开发者协作网络",
   "PLAY_BUTTON": "播放",
-  "SEARCH_PLACEHOLDER": "请输入仓库名称",
+  "SEARCH_PLACEHOLDER": "请输入 GitHub 仓库名称或开发者 ID",
   "COUNT_FOR_RELATED_PROJECTS": "<span> 有 </span><strong> {count} </strong><span> 个关联项目 </span>",
+  "COUNT_FOR_RELATED_DEVELOPORS": "<span> 有 </span><strong> {count} </strong><span> 个关联开发者 </span>",
   "COUNT_FOR_SEARCH_MATCHES": "共有 <strong>{count}</strong><span> 个匹配项",
   "RELATED_PROJECT": "关联项目",
+  "RELATED_DEVELOPER": "关联开发者",
 
   "HELP_TITLE": "开源星系航行指南",
   "HELP_MOUSE_WHEEL": "鼠标滚轮",
@@ -30,26 +31,5 @@
   "HELP_TOGGLE_LINK": "显/隐 边",
   "HELP_BACKQUOTE": "反引号",
   "HELP_TOGGLE_DATA_SCREEN": "显/隐 数据大屏",
-
-  "SteeringIndicator_HOW_TO_TURN_OFF": "按下 Space 键关闭领航模式",
-
-  "ReposUsersTotal_REPOS": "仓库",
-  "ReposUsersTotal_USERS": "用户",
-  "MonthlyActiveReposAndUsers_TITLE": "GitHub月活仓库与月活用户数",
-  "MonthlyActiveReposAndUsers_REPO": "月活仓库",
-  "MonthlyActiveReposAndUsers_USER": "月活用户",
-  "MonthlyActiveReposAndUsers_XAXIS_LABEL_UNIT": "月",
-  "ContributorsGeoDistribution_TITLE": "2020年开源贡献者地理分布",
-  "UserActionsPie_TITLE": "用户行为统计",
-  "UserActionsPie_OPEN_ISSUE": "发起Issue",
-  "UserActionsPie_COMMENT_ISSUE": "评论Issue",
-  "UserActionsPie_OPEN_PR": "发起PR",
-  "UserActionsPie_COMMENT_PR": "评论PR",
-  "UserActionsPie_FORK": "Fork",
-  "UserActionsPie_WATCH": "Watch",
-  "TopLanguages_TITLE": "开源项目使用最多的20门编程语言",
-  "TopActiveRepos_TITLE": "活跃度最高的20个开源项目",
-  "CompaniesScatter_TITLE": "知名公司仓库数及总活跃度",
-  "CompaniesScatter_TOTAL_REPOS_NUM": "总项目数",
-  "CompaniesScatter_TOTAL_ACTIVITY": "总活跃度"
+  "SteeringIndicator_HOW_TO_TURN_OFF": "按下 Space 键关闭领航模式"
 }

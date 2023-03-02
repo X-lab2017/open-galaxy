@@ -24,6 +24,9 @@ const generateEchartsData = (data, focusedNodeID) => {
     });
   };
   const generateEdges = (edges) => {
+    if (edges.length === 0) {
+      return [];
+    }
     const threshold = edges[0][0].split("/").length === 2 ? 5 : 2.5;
     return edges
       .map((e) => {
