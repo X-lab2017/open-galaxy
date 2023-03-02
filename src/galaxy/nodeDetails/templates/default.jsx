@@ -10,17 +10,25 @@ export default function template(props) {
     <div className="container-fluid row">
       <div className="hidden-xs no-pads">
         <div className="col-xs-2">
-          <img
-            width="50px"
-            height="50px"
-            src={`https://avatars.githubusercontent.com/${
-              model.name.split("/")[0]
-            }`}
-            alt="logo"
-          ></img>
+          <a href={`https://github.com/${model.name}`} target="_blank">
+            <img
+              width="50px"
+              height="50px"
+              src={`https://avatars.githubusercontent.com/${
+                model.name.split("/")[0]
+              }`}
+              alt="logo"
+            ></img>
+          </a>
         </div>
         <div className="col-xs-7 text-center">
-          <h4 title={model.name}>{model.name}</h4>
+          <a
+            href={`https://github.com/${model.name}`}
+            target="_blank"
+            className="deco-none"
+          >
+            <h4 title={model.name}>{model.name}</h4>
+          </a>
         </div>
         {isRepoName(model.name) ? (
           <div className="col-xs-3">
