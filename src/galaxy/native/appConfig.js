@@ -7,7 +7,7 @@ import qs from 'qs';
 var defaultConfig = {
   pos: {x : 0, y: 0, z: 0 },
   lookAt: {x: 0, y: 0, z: 0, w: 1},
-  showLinks: false, // links太多了浏览器卡，故默认关掉
+  showLinks: true,
   maxVisibleDistance: 150,
   scale: 1.75,
   manifestVersion: 0
