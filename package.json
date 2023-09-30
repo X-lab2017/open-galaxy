@@ -45,11 +45,9 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
-    "anichart": "2.4.4",
     "bluebird": "^2.9.25",
     "bootstrap": "^3.3.4",
     "echarts": "^5.1.1",
-    "echarts-for-react": "^3.0.2",
     "history": "^1.17.0",
     "keymirror": "^0.1.1",
     "ngraph.events": "0.0.3",
