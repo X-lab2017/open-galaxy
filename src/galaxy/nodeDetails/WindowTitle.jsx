@@ -6,7 +6,7 @@ import isRepoName from "../utils/isRepoName.js";
 
 registerDataTemplates();
 
-class windowTitle extends React.Component {
+class WindowTitle extends React.Component {
   render() {
     return <ContentControl viewModel={this.props.viewModel} key={this.props.viewModel.id} />;
   }
@@ -76,4 +76,4 @@ function registerDataTemplates() {
   );
 }
 
-export default windowTitle;
+export default WindowTitle;

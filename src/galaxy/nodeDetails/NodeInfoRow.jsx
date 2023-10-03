@@ -3,7 +3,7 @@ import formatNumber from '../utils/formatNumber.js';
 
 import isRepoName from '../utils/isRepoName.js';
 
-export default function windowTitle(props) {
+export const NodeListItem = (props) => {
   var item = props.viewModel;
   var image = '';
   if (item.icon) {

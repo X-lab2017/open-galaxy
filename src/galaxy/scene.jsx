@@ -8,7 +8,6 @@ import SearchBox from "./search/searchBoxView.jsx";
 import NoWebGL from "./noWebgl.jsx";
 import Help from "./help.jsx";
 
-import WindowCollection from "./windows/windowCollectionView.jsx";
 import createNativeRenderer from "./native/renderer.js";
 import createKeyboardBindings from "./native/sceneKeyboardBinding.js";
 
@@ -45,7 +44,6 @@ class scene extends React.Component {
         <SteeringIndicator />
         <SearchBox />
         <LocaleSelector />
-        <WindowCollection />
         <Help />
       </div>
     );
@@ -73,15 +71,7 @@ class scene extends React.Component {
     // since we are handling all clicks, we should avoid excessive work and
     // talk with DOM only when absolutely necessary:
     var classList = clickedEl.classList;
-    var isInDegree = classList.contains("in-degree");
-    var isOutDegree = !isInDegree && classList.contains("out-degree");
     var nodeId;
-    if (isInDegree || isOutDegree) {
-      nodeId = parseInt(clickedEl.id, 10);
-      var connectionType = isInDegree ? "in" : "out";
-
-      appEvents.showDegree.fire(nodeId, connectionType);
-    }
     if (classList.contains("node-focus")) {
       nodeId = parseInt(clickedEl.id, 10);
       appEvents.focusOnNode.fire(nodeId);

@@ -5,15 +5,14 @@
  */
 import React from "react";
 import ReactList from "react-list";
-import WindowTitle from "./windowTitle.jsx";
-import NodeInfoRow from "./nodeInfoRow.jsx";
+import WindowTitle from "./WindowTitle.jsx";
+import { NodeListItem } from "./NodeInfoRow.jsx";
 
 var windowId = 0;
 
-let nodeListView = (props) => {
+export const NodeList = ({ windowViewModel }) => {
   windowId += 1;
 
-  var windowViewModel = props.viewModel;
   var className = "window-container";
 
   if (windowViewModel.className) {
@@ -32,7 +31,7 @@ let nodeListView = (props) => {
 
   function renderItem(idx, key) {
     var vm = items[idx];
-    return <NodeInfoRow key={key} viewModel={vm} />;
+    return <NodeListItem key={key} viewModel={vm} />;
   }
 
   function getHeight() {
@@ -56,5 +55,3 @@ let nodeListView = (props) => {
     }
   }
 };
-
-export default nodeListView;

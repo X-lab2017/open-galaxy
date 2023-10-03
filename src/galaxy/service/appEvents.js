@@ -76,7 +76,6 @@ export default eventMirror([
   // These events are not documented since I'm not sure whether to keep them
    'showNodeListWindow',
    'hideNodeListWindow',
-   'showDegree',
    'focusOnNode',
    'focusScene',
    'highlightQuery',

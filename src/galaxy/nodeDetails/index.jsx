@@ -1,27 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import detailModel from './nodeDetailsStore.js';
+import appEvents from '../service/appEvents.js';
 import { BasicNodeInfo } from './BasicNodeInfo.jsx';
+import { ConnectedNodeList } from './ConnectedNodeList.jsx';
+import getBaseNodeViewModel from '../store/baseNodeViewModel.js';
+
+import React, { useEffect, useState } from 'react';
 
 export const NodeDetails = () => {
-  const selectedNode = detailModel.getSelectedNode();
-  // a hack to force update the view
-  const [,setVersion] = useState(0);
-  const updateView = () => {
-    setVersion(version => version + 1);
-  };
+  const [currentNodeId, setCurrentNodeId] = useState(null);
+
+  const update = (nodeId) => {
+    setCurrentNodeId(nodeId);
+  }
 
   useEffect(() => {
-    detailModel.on('changed', updateView);
+    appEvents.selectNode.on(update);
     return (() => {
-      detailModel.off('changed', updateView);
+      appEvents.selectNode.off(update);
     });
   }, []);
 
-  if (!selectedNode) return null;
+  if (!currentNodeId) return null;
+
+  const nodeModel = getBaseNodeViewModel(currentNodeId);
 
   return (
-    <div className='basic-node-info'>
-      <BasicNodeInfo model={selectedNode} />
-    </div>
+    <>
+      <div className='basic-node-info'>
+        <BasicNodeInfo model={nodeModel} />
+      </div>
+      <ConnectedNodeList currentNodeId={currentNodeId} />
+    </>
   );
 }
