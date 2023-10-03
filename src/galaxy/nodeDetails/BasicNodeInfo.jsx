@@ -1,11 +1,9 @@
 import React from "react";
 import intl from "react-intl-universal";
 
-import isRepoName from "../../utils/isRepoName";
+import isRepoName from "../utils/isRepoName";
 
-export default function template(props) {
-  var model = props.model;
-
+export const BasicNodeInfo = ({ model }) => {
   return (
     <div className="container-fluid row">
       <div className="hidden-xs no-pads">

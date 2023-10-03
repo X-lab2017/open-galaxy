@@ -1,7 +1,7 @@
 import React from "react";
 import { findDOMNode } from "react-dom";
 import HoverInfo from "./hoverInfo.jsx";
-import NodeDetails from "./nodeDetails/nodeDetailsView.jsx";
+import { NodeDetails } from "./NodeDetails/index.jsx";
 
 import SteeringIndicator from "./steeringIndicator.jsx";
 import SearchBox from "./search/searchBoxView.jsx";
