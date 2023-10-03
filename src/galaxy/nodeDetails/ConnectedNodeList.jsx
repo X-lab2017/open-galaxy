@@ -1,40 +1,39 @@
 import scene from '../store/scene.js';
+import { NodeList } from '../../components/NodeList/index.jsx';
 import isRepoName from '../utils/isRepoName.js';
-import formatNumber from '../utils/formatNumber.js';
-import { NodeList } from './NodeList.jsx';
 
 import React from 'react';
-
-function ConnectedNodeListModel(name, list, connectionType, id) {
-  this.id = id;
-  this.className = 'degree-results-window';
-  this.list = list;
-  this.nodeName = name;
-  this.degreeNumber = formatNumber(list.length);
-  this.connectionType = connectionType;
-  this.degreeKindName = 'None';
-}
-ConnectedNodeListModel.prototype.__name = 'DegreeWindowViewModel';
-
-function getViewModel(nodeId) {
-  if (nodeId) {
-    const rootInfo = scene.getNodeInfo(nodeId);
-    const connectionType = isRepoName(rootInfo.name) ? 'in' : 'out';
-    const conenctions = scene.getConnected(nodeId, connectionType);
-    const viewModel = new ConnectedNodeListModel(rootInfo.name, conenctions, connectionType, nodeId);
-    return viewModel;
-  }
-  return null;
-}
+import intl from 'react-intl-universal';
 
 export const ConnectedNodeList = ({ currentNodeId }) => {
-  const viewModel = getViewModel(currentNodeId);
-
-  if (!viewModel) {
+  if (!currentNodeId) {
     return null;
   }
 
+  const rootInfo = scene.getNodeInfo(currentNodeId);
+  const connectionType = isRepoName(rootInfo.name) ? 'in' : 'out';
+  const conenctions = scene.getConnected(currentNodeId, connectionType);
+
+  const Title = (
+    <h4 className="window-title">
+      <span className="node-name node-focus" id={currentNodeId}>
+        {rootInfo.name}
+      </span>
+      {isRepoName(rootInfo.name)
+        ? intl.getHTML("COUNT_FOR_RELATED_DEVELOPORS", {
+          count: conenctions.length,
+        })
+        : intl.getHTML("COUNT_FOR_RELATED_PROJECTS", {
+          count: conenctions.length,
+        })}
+    </h4>
+  );
+
   return (
-    <NodeList windowViewModel={viewModel} />
+    <NodeList
+      className="degree-results-window"
+      title={Title}
+      nodes={conenctions}
+    />
   );
 }

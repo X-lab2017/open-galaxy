@@ -3,7 +3,7 @@ import intl from "react-intl-universal";
 
 import isRepoName from "../utils/isRepoName";
 
-export const BasicNodeInfo = ({ model }) => {
+export const Header = ({ model }) => {
   return (
     <div className="container-fluid row">
       <div className="hidden-xs no-pads">

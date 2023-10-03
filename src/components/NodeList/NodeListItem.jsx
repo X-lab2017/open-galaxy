@@ -1,10 +1,9 @@
+import formatNumber from '../../galaxy/utils/formatNumber.js';
+import isRepoName from '../../galaxy/utils/isRepoName.js';
+
 import React from 'react';
-import formatNumber from '../utils/formatNumber.js';
 
-import isRepoName from '../utils/isRepoName.js';
-
-export const NodeListItem = (props) => {
-  var item = props.viewModel;
+export const NodeListItem = ({ item }) => {
   var image = '';
   if (item.icon) {
     image = <img src={item.icon} width='15px' />;

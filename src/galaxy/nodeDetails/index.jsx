@@ -1,5 +1,5 @@
 import appEvents from '../service/appEvents.js';
-import { BasicNodeInfo } from './BasicNodeInfo.jsx';
+import { Header } from './Header.jsx';
 import { ConnectedNodeList } from './ConnectedNodeList.jsx';
 import getBaseNodeViewModel from '../store/baseNodeViewModel.js';
 
@@ -26,7 +26,7 @@ export const NodeDetails = () => {
   return (
     <>
       <div className='basic-node-info'>
-        <BasicNodeInfo model={nodeModel} />
+        <Header model={nodeModel} />
       </div>
       <ConnectedNodeList currentNodeId={currentNodeId} />
     </>
