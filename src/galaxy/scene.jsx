@@ -4,7 +4,7 @@ import HoverInfo from "./hoverInfo.jsx";
 import { NodeDetails } from "./NodeDetails/index.jsx";
 
 import SteeringIndicator from "./steeringIndicator.jsx";
-import SearchBox from "./search/searchBoxView.jsx";
+import { Search } from "./Search/index.jsx";
 import NoWebGL from "./noWebgl.jsx";
 import Help from "./help.jsx";
 
@@ -42,7 +42,7 @@ class scene extends React.Component {
         <HoverInfo />
         <NodeDetails />
         <SteeringIndicator />
-        <SearchBox />
+        <Search />
         <LocaleSelector />
         <Help />
       </div>
