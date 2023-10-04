@@ -1,23 +1,50 @@
 import React from 'react';
-import { MenuOutlined } from '@ant-design/icons';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
-export const Handle = ({ hidden, onClick, placement }) => {
+const iconStyle = {
+  color: '#FFFFFF',
+}
+
+export const Handle = ({ hidden, onClick, drawerPlacement, drawerOpen }) => {
+  const isLeft = drawerPlacement === 'left';
+
+  let icon;
+  if (isLeft) {
+    if (drawerOpen) {
+      icon = <LeftOutlined style={iconStyle} />
+    } else {
+      icon = <RightOutlined style={iconStyle} />
+    }
+  } else {
+    if (drawerOpen) {
+      icon = <RightOutlined style={iconStyle} />
+    } else {
+      icon = <LeftOutlined style={iconStyle} />
+    }
+  }
+
+  if (hidden) return null;
+
   return (
     <div
-      hidden={hidden}
       onClick={onClick}
       style={{
         position: 'absolute',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         width: '20px',
-        height: '40px',
+        height: '50px',
         top: '50%',
-        right: placement === 'left' ? '0px' : 'unset',
-        left: placement === 'left' ? 'unset' : '0px',
-        transform: `translate(${placement === 'right' ? '-' : ''}100%, -50%)`,
+        right: isLeft ? '0px' : 'unset',
+        left: isLeft ? 'unset' : '0px',
+        transform: `translate(${drawerPlacement === 'right' ? '-' : ''}100%, -50%)`,
         zIndex: 1000,
-        backgroundColor: 'white',
+        backgroundColor: 'rgb(77, 77, 77)',
+        cursor: 'pointer',
+        borderRadius: isLeft ? '0px 3px 3px 0px' : '3px 0px 0px 3px',
       }}>
-      <MenuOutlined />
+      {icon}
     </div>
   )
 }

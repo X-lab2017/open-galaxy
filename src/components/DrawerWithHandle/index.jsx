@@ -14,8 +14,8 @@ export const DrawerWithHandle = ({ children, width, height, placement }) => {
   const [openChanging, setOpenChanging] = useState(true);
 
   const show = () => {
-    setOpen(true);
     setOpenChanging(true);
+    setOpen(true);
   };
 
   const hide = () => {
@@ -50,7 +50,8 @@ export const DrawerWithHandle = ({ children, width, height, placement }) => {
       <Handle
         hidden={openChanging}
         onClick={toggle}
-        placement={placement}
+        drawerPlacement={placement}
+        drawerOpen={open}
       />
       <Drawer
         style={{
@@ -60,7 +61,7 @@ export const DrawerWithHandle = ({ children, width, height, placement }) => {
           height,
           // no edge border when in full height
           boxSizing: 'content-box',
-          border: '0.5px solid #7F7F7F',
+          border: '0.5px solid rgb(77, 77, 77)',
           boxShadow: 'none',
           backgroundColor: 'transparent',
         }}
