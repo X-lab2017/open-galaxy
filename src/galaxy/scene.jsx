@@ -38,7 +38,7 @@ class scene extends React.Component {
       <div>
         <div ref="graphContainer" className="graph-full-size">
         </div>
-        <RepoDetails />
+        {/* <RepoDetails /> */}
         <HoverInfo />
         <NodeDetails />
         <SteeringIndicator />
