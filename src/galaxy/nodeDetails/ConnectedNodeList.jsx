@@ -15,7 +15,7 @@ export const ConnectedNodeList = ({ nodeId, nodeName }) => {
 
   const Title = (
     <h4 className="window-title">
-      <span className="node-name node-focus" id={nodeId}>
+      <span className="node-name" id={nodeId}>
         {nodeName}
       </span>
       {isRepoName(nodeName)
@@ -30,7 +30,7 @@ export const ConnectedNodeList = ({ nodeId, nodeName }) => {
 
   return (
     <NodeList
-      className="degree-results-window"
+      className="grid-row"
       title={Title}
       nodes={conenctions}
     />

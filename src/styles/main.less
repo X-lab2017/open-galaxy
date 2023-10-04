@@ -37,27 +37,25 @@ h4 {
 
 .window-container {
   background-color: rgba(0,0,0, 0.8);
-  color: #7F7F7F;
   position: absolute;
 }
 
 .window-list-content {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 250px;
+  height: 250px;
+  color: #7F7F7F;
 }
 .window-list-content::-webkit-scrollbar {
   /*滚动条整体样式*/
-  width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
-  height: 4px;
-  // scrollbar-arrow-color: red;
+  width: 5px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 5px;
 }
 .window-list-content::-webkit-scrollbar-thumb {
   /*滚动条里面小方块*/
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.9);
-  background: rgba(0, 0, 0, 0.8);
-  // scrollbar-arrow-color: red;
+  background: rgba(255, 255, 255, 0.5);
 }
 .window-list-content::-webkit-scrollbar-track {
   /*滚动条里面轨道*/
@@ -77,23 +75,10 @@ h4 {
   width: 395px;
 }
 
-.degree-results-window {
-  left: 16px;
-  bottom: 87px;
-  padding: 10px;
-  width: 395px;
-}
-
 .no-overflow {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@media (max-width: @screen-sm-min) {
-  .degree-results-window {
-    display: none;
-  }
 }
 
 .window-title {

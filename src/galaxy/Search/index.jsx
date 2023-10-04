@@ -56,7 +56,7 @@ export const Search = () => {
       {
         searchResults.length > 0 &&
         <NodeList
-          className="search-results-window"
+          className="window-container search-results-window"
           title={Title}
           nodes={searchResults}
         />
