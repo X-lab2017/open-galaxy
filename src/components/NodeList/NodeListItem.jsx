@@ -1,19 +1,18 @@
 import formatNumber from '../../galaxy/utils/formatNumber.js';
 import isRepoName from '../../galaxy/utils/isRepoName.js';
+import appEvents from '../../galaxy/service/appEvents.js';
 
 import React from 'react';
 
 export const NodeListItem = ({ item }) => {
-  var image = '';
-  if (item.icon) {
-    image = <img src={item.icon} width='15px' />;
-  }
+  const handleClick = () => {
+    appEvents.focusOnNode.fire(item.id);
+  };
 
   return (
     <div className="row">
-      <div className="no-oveflow col-md-9 col-xs-9">
-        {image}
-        <span id={item.id} className="node-focus">
+      <div className="no-oveflow col-md-9 col-xs-9 node-focus" onClick={handleClick}>
+        <span id={item.id}>
           {item.name}
         </span>
       </div>
