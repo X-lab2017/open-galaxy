@@ -1,0 +1,35 @@
+.grid-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-row {
+  padding: 10px 20px 10px 20px;
+  color: white;
+}
+
+.two-networks {
+  display: flex;
+  flex: 1;
+
+  .project-network {
+    flex: 1;
+  }
+
+  .vertical-divider {
+    flex-shrink: 0;
+    width: 0.5px;
+    background-color: rgb(77, 77, 77);
+  }
+
+  .contributor-network {
+    flex: 1;
+  }
+}
+
+.text-center {
+  text-align: center;
+}

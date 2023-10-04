@@ -11,8 +11,6 @@ import Help from "./help.jsx";
 import createNativeRenderer from "./native/renderer.js";
 import createKeyboardBindings from "./native/sceneKeyboardBinding.js";
 
-import RepoDetails from '../SODAComponents/RepoDetails/RepoDetails.jsx';
-
 import LocaleSelector from './locale/LocaleSelector.jsx';
 
 import appEvents from "./service/appEvents.js";
@@ -38,7 +36,6 @@ class scene extends React.Component {
       <div>
         <div ref="graphContainer" className="graph-full-size">
         </div>
-        {/* <RepoDetails /> */}
         <HoverInfo />
         <NodeDetails />
         <SteeringIndicator />

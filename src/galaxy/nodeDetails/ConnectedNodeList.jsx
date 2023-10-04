@@ -5,21 +5,20 @@ import isRepoName from '../utils/isRepoName.js';
 import React from 'react';
 import intl from 'react-intl-universal';
 
-export const ConnectedNodeList = ({ currentNodeId }) => {
-  if (!currentNodeId) {
+export const ConnectedNodeList = ({ nodeId, nodeName }) => {
+  if (!nodeId) {
     return null;
   }
 
-  const rootInfo = scene.getNodeInfo(currentNodeId);
-  const connectionType = isRepoName(rootInfo.name) ? 'in' : 'out';
-  const conenctions = scene.getConnected(currentNodeId, connectionType);
+  const connectionType = isRepoName(nodeName) ? 'in' : 'out';
+  const conenctions = scene.getConnected(nodeId, connectionType);
 
   const Title = (
     <h4 className="window-title">
-      <span className="node-name node-focus" id={currentNodeId}>
-        {rootInfo.name}
+      <span className="node-name node-focus" id={nodeId}>
+        {nodeName}
       </span>
-      {isRepoName(rootInfo.name)
+      {isRepoName(nodeName)
         ? intl.getHTML("COUNT_FOR_RELATED_DEVELOPORS", {
           count: conenctions.length,
         })

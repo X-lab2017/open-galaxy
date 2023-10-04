@@ -64,7 +64,7 @@ const Graph = ({ data, style = {}, focusedNodeID }) => {
         },
         force: {
           initLayout: "circular",
-          gravity: 0.1,
+          gravity: 0.4,
           repulsion: 80,
           edgeLength: [50, 100],
           // Disable the iteration animation of layout

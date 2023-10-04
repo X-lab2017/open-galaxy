@@ -66,7 +66,7 @@ export const DrawerWithHandle = ({ children, width, height, placement }) => {
           backgroundColor: 'transparent',
         }}
         bodyStyle={{
-          padding: '20px',
+          padding: '0px',
           backgroundColor: 'rgba(0, 0, 0, 0.85)',
         }}
         placement={placement}
