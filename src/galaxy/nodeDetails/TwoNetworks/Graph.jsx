@@ -90,9 +90,14 @@ const Graph = ({ data, style = {}, focusedNodeID }) => {
   useEffect(() => {
     let chartDOM = divEL.current;
     const instance = echarts.init(chartDOM);
+    const debouncedResize = debounce(() => {
+      instance.resize();
+    }, 500);
+    window.addEventListener("resize", debouncedResize);
 
     return () => {
       instance.dispose();
+      window.removeEventListener("resize", debouncedResize);
     };
   }, []);
 
@@ -105,11 +110,6 @@ const Graph = ({ data, style = {}, focusedNodeID }) => {
         const url = "https://github.com/" + params.data.id;
         window.open(url, "_blank");
       });
-
-      const debouncedResize = debounce(() => {
-        instance.resize();
-      }, 500);
-      window.addEventListener("resize", debouncedResize);
     }
   }, [data]);
 
