@@ -52,7 +52,7 @@ export const NodeDetails = () => {
         <HorizontalDivider color="rgb(77, 77, 77)" />
 
         {/* contributor activity racing bar (repo only) */}
-        {isRepo && <ContributorActivityRacingBar repoName={nodeName} />}
+        {isRepo && <ContributorActivityRacingBar key={nodeName} repoName={nodeName} />}
 
         <HorizontalDivider color="rgb(77, 77, 77)" />
 

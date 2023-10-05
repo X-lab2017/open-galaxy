@@ -22,27 +22,28 @@ export const ContributorActivityRacingBar = ({ repoName }) => {
   useEffect(() => {
     const fetchData = async () => {
       const url = `https://oss.x-lab.info/open_digger/github/${repoName}/activity_details.json`;
-      const data = await request(url, {
-        responseType: "json",
-      });
-      if (data.hasOwnProperty("error")) {
-        throw `"${repoName}": ${data.error}`;
+      try {
+        const data = await request(url, {
+          responseType: "json",
+        });
+        setRepoActivityDetails(data);
+      } catch (error) {
+        setRepoActivityDetails(null);
       }
-      setRepoActivityDetails(data);
     }
     fetchData();
-  }, [repoName]);
+  }, []);
 
   if (!repoActivityDetails) return null;
 
   return (
     <div>
-      <div className="hypertrons-crx-border hypertrons-crx-container">
-        <div className="hypertrons-crx-title">
+      <div>
+        <div>
           <span>
             {intl.get('CONTRIBUTOR_ACTIVITY_RACING_BAR')}
           </span>
-          <div className="hypertrons-crx-title-extra developer-tab">
+          <div>
             <Space>
               {/* speed control */}
               <SpeedController
@@ -54,12 +55,12 @@ export const ContributorActivityRacingBar = ({ repoName }) => {
 
               {/* 3 buttons */}
               <Space size={3}>
-                {/* last month | earliest month */}
+                {/* previous month | earliest month */}
                 <PlayerButton
                   tooltip="Long press to the earliest"
                   icon={<StepBackwardFilled />}
-                  onClick={mediaControlersRef.current?.previous}
-                  onLongPress={mediaControlersRef.current?.earliest}
+                  onClick={() => mediaControlersRef.current?.previous()}
+                  onLongPress={() => mediaControlersRef.current?.earliest()}
                 />
                 {/* play | pause */}
                 <PlayerButton
@@ -76,24 +77,20 @@ export const ContributorActivityRacingBar = ({ repoName }) => {
                 <PlayerButton
                   tooltip="Long press to the latest"
                   icon={<StepForwardFilled />}
-                  onClick={mediaControlersRef.current?.next}
-                  onLongPress={mediaControlersRef.current?.latest}
+                  onClick={() => mediaControlersRef.current?.next()}
+                  onLongPress={() => mediaControlersRef.current?.latest()}
                 />
               </Space>
             </Space>
           </div>
         </div>
-        <div className="d-flex flex-wrap flex-items-center">
-          <div className="col-12 col-md-8">
-            <div style={{ margin: '10px 0 20px 20px' }}>
-              <RacingBar
-                ref={mediaControlersRef}
-                speed={speed}
-                data={repoActivityDetails}
-                setPlaying={setPlaying}
-              />
-            </div>
-          </div>
+        <div>
+          <RacingBar
+            ref={mediaControlersRef}
+            speed={speed}
+            data={repoActivityDetails}
+            setPlaying={setPlaying}
+          />
         </div>
       </div>
     </div>

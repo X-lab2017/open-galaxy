@@ -138,11 +138,11 @@ export const getOption = async (data, month, speed, maxBars, enableAnimation) =>
       elements: [
         {
           type: 'text',
-          right: 60,
-          bottom: 60,
+          right: 40,
+          bottom: 40,
           style: {
             text: month,
-            font: 'bolder 60px monospace',
+            font: 'bolder 40px monospace',
             fill: DARK_TEXT_COLOR,
           },
           z: 100,

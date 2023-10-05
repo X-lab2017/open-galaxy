@@ -3,7 +3,6 @@ import request from "../../service/request.js";
 
 import React, { useEffect, useState } from "react";
 import intl from "react-intl-universal";
-import regeneratorRuntime from "regenerator-runtime"; // see https://stackoverflow.com/a/70933339/10369621
 
 const graphStyle = {
   width: "100%",
