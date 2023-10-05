@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import intl from "react-intl-universal";
 
 const graphStyle = {
-  width: "100%",
   height: "230px",
 };
 

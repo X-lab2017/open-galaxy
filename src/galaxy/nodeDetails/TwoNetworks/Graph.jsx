@@ -114,9 +114,7 @@ const Graph = ({ data, style = {}, focusedNodeID }) => {
   }, [data]);
 
   return (
-    <div className="hypertrons-crx-border">
-      <div ref={divEL} style={style}></div>
-    </div>
+    <div ref={divEL} style={style}></div>
   );
 };
 

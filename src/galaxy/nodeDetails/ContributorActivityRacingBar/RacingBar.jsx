@@ -145,15 +145,15 @@ const RacingBar = forwardRef(({ speed, data, setPlaying }, forwardedRef) => {
   }, [data]);
 
   return (
-    <div>
-      <Spin
-        spinning={enableSpinning && loadedAvatars < contributors.length}
-        tip={`Loading avatars ${loadedAvatars}/${contributors.length}`}
-        style={{ maxHeight: 'none' }} // disable maxHeight to make the loading tip be placed in the center
-      >
-        <div ref={divEL} style={{ width: '100%', height }} />
-      </Spin>
-    </div>
+    <Spin
+      spinning={enableSpinning && loadedAvatars < contributors.length}
+      tip={`Loading avatars ${loadedAvatars}/${contributors.length}`}
+      style={{ maxHeight: 'none' }} // disable maxHeight to make the loading tip be placed in the center
+    >
+      {/* FIXME: the width of the chart should not be hardcoded */}
+      {/* atm I use React `key` to refresh the component. When the drawer is hidden, the 100% width equals to 0px, which we can't use */}
+      <div ref={divEL} style={{ width: '500px', height }} />
+    </Spin>
   );
 }
 );

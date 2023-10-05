@@ -82,14 +82,13 @@ export const ContributorActivityRacingBar = ({ repoName }) => {
           </Space>
         </Space>
       </div>
-      <div>
-        <RacingBar
-          ref={mediaControlersRef}
-          speed={speed}
-          data={repoActivityDetails}
-          setPlaying={setPlaying}
-        />
-      </div>
+      {/* the racing bar */}
+      <RacingBar
+        ref={mediaControlersRef}
+        speed={speed}
+        data={repoActivityDetails}
+        setPlaying={setPlaying}
+      />
     </div>
   );
 };
