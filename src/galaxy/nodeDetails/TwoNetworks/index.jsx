@@ -1,6 +1,5 @@
 import Graph from "./Graph.jsx";
-import request from "../service/request.js";
-import { VerticalDivider } from "../../components/Divider/index.jsx";
+import request from "../../service/request.js";
 
 import React, { useEffect, useState } from "react";
 import intl from "react-intl-universal";

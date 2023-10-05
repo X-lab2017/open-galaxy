@@ -5,7 +5,9 @@ import { ConnectedNodeList } from './ConnectedNodeList.jsx';
 import getBaseNodeViewModel from '../store/baseNodeViewModel.js';
 import { DrawerWithHandle } from '../../components/DrawerWithHandle/index.jsx';
 import { HorizontalDivider } from '../../components/Divider/index.jsx';
-import { TwoNetworks } from './TwoNetworks.jsx';
+import { TwoNetworks } from './TwoNetworks/index.jsx';
+import { ContributorActivityRacingBar } from './ContributorActivityRacingBar/index.jsx';
+import isRepoName from '../utils/isRepoName.js';
 
 import './index.less';
 
@@ -29,6 +31,7 @@ export const NodeDetails = () => {
 
   const rootInfo = scene.getNodeInfo(currentNodeId);
   const nodeName = rootInfo.name;
+  const isRepo = isRepoName(nodeName);
   const nodeModel = getBaseNodeViewModel(currentNodeId);
 
   return (
@@ -38,16 +41,23 @@ export const NodeDetails = () => {
       placement="right"
     >
       <div className="grid-container">
-      {/* header */}
-      <Header model={nodeModel} />
-      {/* divider */}
-      <HorizontalDivider color="rgb(77, 77, 77)" />
-      {/* two networks */}
-      <TwoNetworks nodeName={nodeName} />
-      {/* divider */}
-      <HorizontalDivider color="rgb(77, 77, 77)" />
-      {/* connected node list */}
-      <ConnectedNodeList nodeId={currentNodeId} nodeName={nodeName} />
+        {/* header */}
+        <Header model={nodeModel} />
+
+        <HorizontalDivider color="rgb(77, 77, 77)" />
+
+        {/* two networks */}
+        <TwoNetworks nodeName={nodeName} />
+
+        <HorizontalDivider color="rgb(77, 77, 77)" />
+
+        {/* contributor activity racing bar (repo only) */}
+        {isRepo && <ContributorActivityRacingBar repoName={nodeName} />}
+
+        <HorizontalDivider color="rgb(77, 77, 77)" />
+
+        {/* connected node list */}
+        <ConnectedNodeList nodeId={currentNodeId} nodeName={nodeName} />
       </div>
     </DrawerWithHandle>
   );
