@@ -44,28 +44,28 @@ export const NavigationHelper = () => {
           <table>
             <tbody>
               <tr>
-                <td> <code>W</code> </td> <td>{intl.get("HELP_MOVE_FORWARD")}</td>
+                <td><code>W</code></td><td>{intl.get("HELP_MOVE_FORWARD")}</td>
               </tr>
               <tr>
-                <td> <code>S</code> </td> <td>{intl.get("HELP_MOVE_BACKWARD")}</td>
+                <td><code>S</code></td><td>{intl.get("HELP_MOVE_BACKWARD")}</td>
               </tr>
               <tr>
-                <td> <code>A</code> </td> <td>{intl.get("HELP_MOVE_LEFT")}</td>
+                <td><code>A</code></td><td>{intl.get("HELP_MOVE_LEFT")}</td>
               </tr>
               <tr>
-                <td> <code>D</code> </td> <td>{intl.get("HELP_MOVE_RIGHT")}</td>
+                <td><code>D</code></td><td>{intl.get("HELP_MOVE_RIGHT")}</td>
               </tr>
               <tr>
-                <td> <code>R</code> </td> <td>{intl.get("HELP_FLY_UP")}</td>
+                <td><code>R</code></td><td>{intl.get("HELP_FLY_UP")}</td>
               </tr>
               <tr>
-                <td> <code>F</code> </td> <td>{intl.get("HELP_FLY_DOWN")}</td>
+                <td><code>F</code></td><td>{intl.get("HELP_FLY_DOWN")}</td>
               </tr>
               <tr>
-                <td> <code>Q</code> </td> <td>{intl.get("HELP_ROLL_RIGHT")}</td>
+                <td><code>Q</code></td><td>{intl.get("HELP_ROLL_RIGHT")}</td>
               </tr>
               <tr>
-                <td> <code>E</code> </td> <td>{intl.get("HELP_ROLL_LEFT")}</td>
+                <td><code>E</code></td><td>{intl.get("HELP_ROLL_LEFT")}</td>
               </tr>
             </tbody>
           </table>
@@ -73,20 +73,20 @@ export const NavigationHelper = () => {
           <table>
             <tbody>
               <tr>
-                <td> <code>W</code> </td> <td>{intl.get("HELP_MOVE_FORWARD")}</td>
-                <td> <code>R</code> </td> <td>{intl.get("HELP_FLY_UP")}</td>
+                <td><code>W</code></td><td>{intl.get("HELP_MOVE_FORWARD")}</td>
+                <td><code>R</code></td><td>{intl.get("HELP_FLY_UP")}</td>
               </tr>
               <tr>
-                <td> <code>S</code> </td> <td>{intl.get("HELP_MOVE_BACKWARD")}</td>
-                <td> <code>F</code> </td> <td>{intl.get("HELP_FLY_DOWN")}</td>
+                <td><code>S</code></td><td>{intl.get("HELP_MOVE_BACKWARD")}</td>
+                <td><code>F</code></td><td>{intl.get("HELP_FLY_DOWN")}</td>
               </tr>
               <tr>
-                <td> <code>A</code> </td> <td>{intl.get("HELP_MOVE_LEFT")}</td>
-                <td> <code>Q</code> </td> <td>{intl.get("HELP_ROLL_RIGHT")}</td>
+                <td><code>A</code></td><td>{intl.get("HELP_MOVE_LEFT")}</td>
+                <td><code>Q</code></td><td>{intl.get("HELP_ROLL_RIGHT")}</td>
               </tr>
               <tr>
-                <td> <code>D</code> </td> <td>{intl.get("HELP_MOVE_RIGHT")}</td>
-                <td> <code>E</code> </td> <td>{intl.get("HELP_ROLL_LEFT")}</td>
+                <td><code>D</code></td><td>{intl.get("HELP_MOVE_RIGHT")}</td>
+                <td><code>E</code></td><td>{intl.get("HELP_ROLL_LEFT")}</td>
               </tr>
             </tbody>
           </table>
@@ -94,18 +94,18 @@ export const NavigationHelper = () => {
         {/* Up Down Left Right */}
         <table>
           <tbody>
-            <tr> <td> <code>Up</code> </td> <td>{intl.get("HELP_ROTATE_UP")}</td> </tr>
-            <tr> <td> <code>Down</code> </td> <td>{intl.get("HELP_ROTATE_DOWN")}</td> </tr>
-            <tr> <td> <code>Left</code> </td> <td>{intl.get("HELP_ROTATE_LEFT")}</td> </tr>
-            <tr> <td> <code>Right</code> </td> <td>{intl.get("HELP_ROTATE_RIGHT")}</td> </tr>
+            <tr><td><code>Up</code></td><td>{intl.get("HELP_ROTATE_UP")}</td></tr>
+            <tr><td><code>Down</code></td><td>{intl.get("HELP_ROTATE_DOWN")}</td></tr>
+            <tr><td><code>Left</code></td><td>{intl.get("HELP_ROTATE_LEFT")}</td></tr>
+            <tr><td><code>Right</code></td><td>{intl.get("HELP_ROTATE_RIGHT")}</td></tr>
           </tbody>
         </table>
         {/* L Shift Space */}
         <table>
           <tbody>
-            <tr> <td> <code>L</code> </td> <td>{intl.get("HELP_TOGGLE_LINK")}</td> </tr>
-            <tr> <td> <code>shift</code> </td> <td>{intl.get("HELP_MOVE_FASTER")}</td> </tr>
-            <tr> <td> <code>Space</code> </td> <td>{intl.get("HELP_TOGGLE_STEERING")}</td> </tr>
+            <tr><td><code>L</code></td><td>{intl.get("HELP_TOGGLE_LINK")}</td></tr>
+            <tr><td><code>shift</code></td><td>{intl.get("HELP_MOVE_FASTER")}</td></tr>
+            <tr><td><code>Space</code></td><td>{intl.get("HELP_TOGGLE_STEERING")}</td></tr>
           </tbody>
         </table>
       </div>
