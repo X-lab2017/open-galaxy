@@ -38,16 +38,16 @@ export const NodeDetails = () => {
       placement="right"
     >
       <div className="grid-container">
-        {/* header */}
-        <Header model={nodeModel} />
-        {/* divider */}
-        <HorizontalDivider color="rgb(77, 77, 77)" />
-        {/* two networks */}
-        <TwoNetworks nodeName={nodeName} />
-        {/* divider */}
-        <HorizontalDivider color="rgb(77, 77, 77)" />
-        {/* connected node list */}
-        <ConnectedNodeList nodeId={currentNodeId} nodeName={nodeName} />
+      {/* header */}
+      <Header model={nodeModel} />
+      {/* divider */}
+      <HorizontalDivider color="rgb(77, 77, 77)" />
+      {/* two networks */}
+      <TwoNetworks nodeName={nodeName} />
+      {/* divider */}
+      <HorizontalDivider color="rgb(77, 77, 77)" />
+      {/* connected node list */}
+      <ConnectedNodeList nodeId={currentNodeId} nodeName={nodeName} />
       </div>
     </DrawerWithHandle>
   );

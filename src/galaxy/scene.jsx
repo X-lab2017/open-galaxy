@@ -6,7 +6,7 @@ import { NodeDetails } from "./NodeDetails/index.jsx";
 import SteeringIndicator from "./steeringIndicator.jsx";
 import { Search } from "./Search/index.jsx";
 import NoWebGL from "./noWebgl.jsx";
-import Help from "./help.jsx";
+import { NavigationHelper } from "./NavigationHelper/index.jsx";
 
 import createNativeRenderer from "./native/renderer.js";
 import createKeyboardBindings from "./native/sceneKeyboardBinding.js";
@@ -41,7 +41,7 @@ class scene extends React.Component {
         <SteeringIndicator />
         <Search />
         <LocaleSelector />
-        <Help />
+        <NavigationHelper />
       </div>
     );
   };

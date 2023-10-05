@@ -30,7 +30,7 @@ export const ConnectedNodeList = ({ nodeId, nodeName }) => {
 
   return (
     <NodeList
-      className="grid-row"
+      className="grid-row connected-node-list"
       title={Title}
       nodes={conenctions}
     />
