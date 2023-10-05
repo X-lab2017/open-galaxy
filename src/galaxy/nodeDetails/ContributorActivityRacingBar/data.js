@@ -88,6 +88,8 @@ export const getOption = async (data, month, speed, maxBars, enableAnimation) =>
         show: true,
         color: DARK_TEXT_COLOR,
       },
+      animationDuration: 0,
+      animationDurationUpdate: enableAnimation ? 200 : 0,
     },
     yAxis: {
       type: 'category',
