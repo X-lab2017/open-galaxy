@@ -1,7 +1,9 @@
+import { linearMap } from "./helpers";
+
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
+import { debounce } from "lodash-es";
 
-import { linearMap, debounce } from "./helpers";
 
 const NODE_SIZE = [10, 25];
 
@@ -104,7 +106,7 @@ const Graph = ({ data, style = {}, focusedNodeID }) => {
         window.open(url, "_blank");
       });
 
-      const [debouncedResize, teardown] = debounce(() => {
+      const debouncedResize = debounce(() => {
         instance.resize();
       }, 500);
       window.addEventListener("resize", debouncedResize);

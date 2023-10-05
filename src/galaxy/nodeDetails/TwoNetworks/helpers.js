@@ -26,22 +26,3 @@ export function linearMap(val, domain, range) {
 
   return ((val - d0) / subDomain) * subRange + r0;
 }
-// https://dev.to/bwca/create-a-debounce-function-from-scratch-in-typescript-560m
-export function debounce(fn, ms) {
-  let timer;
-
-  const debouncedFunc = (args) =>
-    new Promise((resolve) => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-
-      timer = setTimeout(() => {
-        resolve(fn(args));
-      }, ms);
-    });
-
-  const teardown = () => clearTimeout(timer);
-
-  return [debouncedFunc, teardown];
-}
