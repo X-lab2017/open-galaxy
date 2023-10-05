@@ -32,8 +32,6 @@ export const NodeList = ({ className, title, nodes }) => {
   }
 
   return (
-    <div className={className}>
-      <div className="window-list-content">{content(nodes)}</div>
-    </div>
+    <div className={`window-list-content ${className}`}>{content(nodes)}</div>
   );
 };

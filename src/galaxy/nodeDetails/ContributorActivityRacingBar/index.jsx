@@ -37,61 +37,58 @@ export const ContributorActivityRacingBar = ({ repoName }) => {
   if (!repoActivityDetails) return null;
 
   return (
-    <div>
-      <div>
-        <div>
-          <span>
-            {intl.get('CONTRIBUTOR_ACTIVITY_RACING_BAR')}
-          </span>
-          <div>
-            <Space>
-              {/* speed control */}
-              <SpeedController
-                speed={speed}
-                onSpeedChange={(speed) => {
-                  setSpeed(speed);
-                }}
-              />
-
-              {/* 3 buttons */}
-              <Space size={3}>
-                {/* previous month | earliest month */}
-                <PlayerButton
-                  tooltip="Long press to the earliest"
-                  icon={<StepBackwardFilled />}
-                  onClick={() => mediaControlersRef.current?.previous()}
-                  onLongPress={() => mediaControlersRef.current?.earliest()}
-                />
-                {/* play | pause */}
-                <PlayerButton
-                  icon={playing ? <PauseCircleFilled /> : <PlayCircleFilled />}
-                  onClick={() => {
-                    if (playing) {
-                      mediaControlersRef.current?.pause();
-                    } else {
-                      mediaControlersRef.current?.play();
-                    }
-                  }}
-                />
-                {/* next month | latest month */}
-                <PlayerButton
-                  tooltip="Long press to the latest"
-                  icon={<StepForwardFilled />}
-                  onClick={() => mediaControlersRef.current?.next()}
-                  onLongPress={() => mediaControlersRef.current?.latest()}
-                />
-              </Space>
-            </Space>
-          </div>
-        </div>
-        <div>
-          <RacingBar
-            ref={mediaControlersRef}
+    <div className="contributor-activity-racing-bar">
+      <h4 className="text-center">
+        {intl.get('CONTRIBUTOR_ACTIVITY_RACING_BAR')}
+      </h4>
+      {/* media player */}
+      <div className="media-player">
+        <Space>
+          {/* speed control */}
+          <SpeedController
             speed={speed}
-            data={repoActivityDetails}
-            setPlaying={setPlaying}
+            onSpeedChange={(speed) => {
+              setSpeed(speed);
+            }}
           />
-        </div>
+
+          {/* 3 buttons */}
+          <Space size={3}>
+            {/* previous month | earliest month */}
+            <PlayerButton
+              tooltip="Long press to the earliest"
+              icon={<StepBackwardFilled />}
+              onClick={() => mediaControlersRef.current?.previous()}
+              onLongPress={() => mediaControlersRef.current?.earliest()}
+            />
+            {/* play | pause */}
+            <PlayerButton
+              icon={playing ? <PauseCircleFilled /> : <PlayCircleFilled />}
+              onClick={() => {
+                if (playing) {
+                  mediaControlersRef.current?.pause();
+                } else {
+                  mediaControlersRef.current?.play();
+                }
+              }}
+            />
+            {/* next month | latest month */}
+            <PlayerButton
+              tooltip="Long press to the latest"
+              icon={<StepForwardFilled />}
+              onClick={() => mediaControlersRef.current?.next()}
+              onLongPress={() => mediaControlersRef.current?.latest()}
+            />
+          </Space>
+        </Space>
+      </div>
+      <div>
+        <RacingBar
+          ref={mediaControlersRef}
+          speed={speed}
+          data={repoActivityDetails}
+          setPlaying={setPlaying}
+        />
       </div>
     </div>
   );

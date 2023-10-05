@@ -35,8 +35,9 @@ export const PlayerButton = ({ tooltip, icon, onClick, onLongPress, }) => {
       mouseEnterDelay={1}
     >
       <Button
-        style={{ backgroundColor: 'var(--color-btn-bg)' }}
-        styles={{ icon: { color: 'var(--color-fg-default)' } }}
+        style={{ backgroundColor: 'transparent' }}
+        styles={{ icon: { color: 'white' } }}
+        size='small'
         icon={icon}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}

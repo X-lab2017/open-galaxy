@@ -22,6 +22,7 @@ export const SpeedController = ({
 }) => {
   return (
     <Segmented
+      size='small'
       style={{
         backgroundColor: 'var(--color-btn-bg)',
         color: 'var(--color-btn-text)',
