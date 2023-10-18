@@ -2,6 +2,7 @@ import RacingBar from './RacingBar';
 import { PlayerButton } from './PlayerButton';
 import { SpeedController } from './SpeedController';
 import request from "../../service/request.js";
+import { getMonthlyData } from './data';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Space } from 'antd';
@@ -86,7 +87,7 @@ export const ContributorActivityRacingBar = ({ repoName }) => {
       <RacingBar
         ref={mediaControlersRef}
         speed={speed}
-        data={repoActivityDetails}
+        data={getMonthlyData(repoActivityDetails)}
         setPlaying={setPlaying}
       />
     </div>
