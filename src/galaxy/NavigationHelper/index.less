@@ -1,0 +1,33 @@
+.navigation-helper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding: 7px;
+  font-family: 'Roboto', sans-serif;
+  user-select: none;
+
+  table {
+    border-collapse: separate;
+    border-spacing: 10px 0;
+  }
+
+  code {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 100%;
+    color: rgb(28, 206, 157);
+    background-color: inherit;
+  }
+
+  td {
+    text-align: right;
+  }
+
+  td:nth-child(even) {
+    text-align: left;
+  }
+}

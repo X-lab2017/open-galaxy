@@ -1,21 +1,15 @@
 import React from "react";
 import { findDOMNode } from "react-dom";
 import HoverInfo from "./hoverInfo.jsx";
-import NodeDetails from "./nodeDetails/nodeDetailsView.jsx";
+import { NodeDetails } from "./NodeDetails";
 
 import SteeringIndicator from "./steeringIndicator.jsx";
-import SearchBox from "./search/searchBoxView.jsx";
+import { Search } from "./Search";
 import NoWebGL from "./noWebgl.jsx";
-import Help from "./help.jsx";
-// import About from "./about.jsx";
+import { NavigationHelper } from "./NavigationHelper";
 
-import WindowCollection from "./windows/windowCollectionView.jsx";
 import createNativeRenderer from "./native/renderer.js";
 import createKeyboardBindings from "./native/sceneKeyboardBinding.js";
-
-// SODA related components
-// import GitHubScreen from "../SODAComponents/GitHubScreen/GitHubScreen.jsx";
-import RepoDetails from '../SODAComponents/RepoDetails/RepoDetails.jsx';
 
 import LocaleSelector from './locale/LocaleSelector.jsx';
 
@@ -41,19 +35,13 @@ class scene extends React.Component {
     return (
       <div>
         <div ref="graphContainer" className="graph-full-size">
-          {/* SODA related components */}
-          {/* 放到这个位置是为了让GitHubScreen里面的键盘事件也在container作用范围内 */}
-          {/* <GitHubScreen /> */}
         </div>
-        <RepoDetails />
         <HoverInfo />
         <NodeDetails />
         <SteeringIndicator />
-        <SearchBox />
+        <Search />
         <LocaleSelector />
-        <WindowCollection />
-        <Help />
-        {/* <About /> */}
+        <NavigationHelper />
       </div>
     );
   };
@@ -80,15 +68,7 @@ class scene extends React.Component {
     // since we are handling all clicks, we should avoid excessive work and
     // talk with DOM only when absolutely necessary:
     var classList = clickedEl.classList;
-    var isInDegree = classList.contains("in-degree");
-    var isOutDegree = !isInDegree && classList.contains("out-degree");
     var nodeId;
-    if (isInDegree || isOutDegree) {
-      nodeId = parseInt(clickedEl.id, 10);
-      var connectionType = isInDegree ? "in" : "out";
-
-      appEvents.showDegree.fire(nodeId, connectionType);
-    }
     if (classList.contains("node-focus")) {
       nodeId = parseInt(clickedEl.id, 10);
       appEvents.focusOnNode.fire(nodeId);

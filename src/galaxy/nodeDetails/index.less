@@ -1,0 +1,45 @@
+.grid-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.grid-row {
+  padding: 10px 20px 10px 20px;
+}
+
+.two-networks {
+  display: flex;
+
+  .project-network {
+    flex: 1;
+  }
+
+  .vertical-divider {
+    flex-shrink: 0;
+    width: 0.5px;
+    background-color: rgb(77, 77, 77);
+  }
+
+  .contributor-network {
+    flex: 1;
+  }
+}
+
+.connected-node-list {
+  flex: 1;
+}
+
+.contributor-activity-racing-bar {
+  color: white;
+
+  .media-player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,64 +1,138 @@
-# OpenGalaxy
+## 一、作品背景
+OpenGalaxy 2019 的推出比较惊艳，但依然存在一些不足：
 
-> Who am I, where have I been, and where am I going?
+- 受限于 Gephi 本身的力引导布局的运算难度，依然需要大量裁剪需要渲染的节点数量，在 OpenGalaxy 2019 中，只包含了最活跃的 17 万个节点和 280 万条边。这样数据量级的一次布局计算就需要 10 个小时以上。
+- 很多业内的专家对 OpenGalaxy 都非常感兴趣，但由于是一张制作好的静态图，其实缺少了自主探索的能力，这使得大家虽然理解 OpenGalaxy 可以带来很多洞察，但却无法得到超过这张图内容以外的洞察了。
+- 使用二维的 OpenGalaxy，即便每年生成一张精美的图片，但事实上整个开源生态的演化在时序上是一个连续的过程，不能有动态的效果将是一大遗憾。
 
-In real society, people actually rely on their connection with others to determine their position. In the open source world of GitHub, various collaborative behaviors between developers and projects have also formed a huge social collaborative network.
+因为上面的几个原因，我们一直在寻找一种可交互的，可自主探索的在线开源协作网络可视化工具。
 
-We can't answer the above profound philosophical three questions, but we want to let you see with your own eyes who you are, where have you been and where you are going in the open source world through this project.
+## 二、作品设计
+整个应用画布主体是 GitHub 协作网络。用户可以从宏观和微观两个角度探索开源协作网络。通过键鼠可以自由探索网络，点击网络上的节点将在右侧面板展示节点详情。节点详情除了提供一些网络拓扑信息外，还结合 OpenDigger 指标数据进行可视化图表的呈现。
 
-In this project we cleaned the log data of GitHub, abstracted it into a developer collaboration behavior model, and built the following huge GitHub collaboration galaxy.
+## 三、技术方案
+### 数据使用
+1. [基于 Ngraph 二进制化的全域“开发者-仓库”协作网络数据](https://xlab2017.yuque.com/staff-kbz9wp/olpzth/oxlc8xks55g7vrop#jp71H)
+2. [仓库的两个网络和开发者的两个网络(repo_network & developer_network)](https://github.com/X-lab2017/open-digger#for-repos)
+3. [仓库内贡献者活跃度详情(activity_details)](https://github.com/X-lab2017/open-digger#for-repos)
 
-![OpenGalaxy2D](https://user-images.githubusercontent.com/32434520/220116878-31df8448-5127-4c33-a82e-b8c840e132ba.jpg)
+### 开源技术
+我们基于开源技术打造一款开源作品。
+#### 1、OpenDigger
+[OpenDigger](https://github.com/X-lab2017/open-digger/) 是一个面向开源软件生态数据的一站式分析挖掘平台，目标是构建开源领域的数据生态，成为促进开源生态持续发展的数据基础设施开源项目，包括软件开发活动数据、软件生态对象关系数据、标签数据、度量指标、度量模型、实现算法、分析工具、以及大量社区分析案例集等，目前正在木兰开源社区孵化。
 
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/21625412/1695978025335-4c21c026-cb6a-4bbe-b1c9-8bcdf9fe666d.png#averageHue=%239baacd&clientId=ua59c3b58-5eb3-4&from=paste&height=305&id=ud0d74e77&originHeight=1063&originWidth=1675&originalType=binary&ratio=2&rotation=0&showTitle=false&size=110618&status=done&style=stroke&taskId=u9f5c7d7a-95fc-46ae-923b-4cda790e632&title=&width=481)
+#### 2、Ngraph
+[Ngraph](https://github.com/anvaka/ngraph) 是一组与图相关的算法，可在浏览器或服务器端使用。
 
-What are you waiting for? Come and experience it! https://open-galaxy.x-lab.info/
+**可用功能包括：**
 
-# Install
+1. **核心库：** `ngraph.graph` 包，用于简单表示图形数据结构。
 
-Some packages in this repository are old, `Node 14` MUST be used to start the project. [nvm](https://github.com/nvm-sh/nvm) is recommended to manage multiple versions of `Node` in your machine.
+2. **互动渲染器：** 一组库使用 `ngraph` 模块在浏览器中提供渲染：
 
-```bash
-git config --global url."https://github.com/".insteadOf git://github.com/ # one package uses a no longer supported url, this is a fix
-git clone https://github.com/X-lab2017/open-galaxy.git
-cd open-galaxy
-yarn install
-yarn start # This will start local development sever with auto-rebuild.
-```
+   - **VivaGraph：** 最快的图形绘制库之一，现在由 `ngraph` 模块构建，包含一组模块。
 
-### Build your own graphs
+   - **ngraph.pixel：** 基于 `three.js` 的低级 `ShaderMaterial` 的快速 3D 图渲染器。
 
-Click [here](https://github.com/anvaka/pm#your-own-graphs) to see how to build your own graphs.
+3. **算法：**
 
-### Explore OpenGalaxy
+   - **ngraph.path：** 高速图路径查找算法。
+
+   - **ngraph.kruskal：** 最小生成树算法。
+
+4. **聚类/社区检测：**
+
+   - **ngraph.cw：** 快速的社区检测算法，基于标签传播。
+
+   - **ngraph.louvain：** 另一个最先进的算法，使用模块性优化。
+
+5. **图度量：**
+
+   - **ngraph.pagerank：** 计算图的 PageRank。
+
+   - **ngraph.hits：** 作为 PageRank 的替代，实现 Hub 和 Authority（HITS）算法。
+
+   - **ngraph.centrality：** 中心性计算。
+
+6. **序列化：**
+
+   - **Dot 文件序列化器：** 支持到/自 (Gephi) `gexf` 文件的转换，以及用于大图的高效的二进制格式，如 500 万条边、100 万个节点只需 23MB 的空间。
+
+7. **图布局：**
+
+   - **ngraph.forcelayout：** 在任意维度空间（2D、3D、4D 等）中执行基于力的布局。
+
+   - 当浏览器中无法实现布局（例如，图太大以至于性能不佳）时，可以离线计算布局并在浏览器中提供静态位置，可使用：
+
+     - **ngraph.offline.layout：** 用于执行此类布局的 npm 模块。
+
+     - **ngraph.native：** 完全用 C++ 实现，速度比 JavaScript 版本快 9 倍。
+
+#### 3、Three.js
+[Three.js](https://github.com/mrdoob/three.js) 是一个开源的 3D 图形库，用于在 Web 上创建和展示 3D 图形和交互式内容。它基于 JavaScript，利用 WebGL 技术，使开发者能够轻松地构建引人入胜的 3D 应用程序和场景。Three.js 提供了丰富的功能和工具，包括以下要点：
+
+1. **渲染引擎：** Three.js 具有高性能的渲染引擎，能够在各种设备和浏览器上呈现流畅的 3D 图形。
+
+2. **多种几何体：** 支持创建各种几何体，如立方体、球体、圆柱体等，以及复杂的模型导入。
+
+3. **材质和纹理：** 提供丰富的材质和纹理选项，允许开发者定制物体的外观，包括颜色、贴图和反射。
+
+4. **光照和阴影：** Three.js 支持各种光源类型，包括点光源、平行光源和聚光灯，以及实时阴影生成。
+
+5. **相机控制：** 提供不同类型的相机控制器，使用户能够在 3D 场景中自由浏览和交互。
+
+6. **动画和骨骼：** 支持制作动画和骨骼动画，以创建生动的角色和物体运动。
+
+7. **物理引擎：** 集成了物理引擎，可模拟真实世界的物理行为，如碰撞和重力。
+
+8. **粒子系统：** 允许创建各种粒子效果，如雨、火、烟等。
+
+9. **VR 和 AR 支持：** Three.js 支持虚拟现实（VR）和增强现实（AR）应用程序的开发。
+
+10. **社区和插件：** 拥有活跃的社区支持和丰富的插件生态系统，可扩展其功能。
+
+总之，Three.js 是一个功能强大且易于使用的工具，使开发者能够创建引人入胜的 Web 上的 3D 交互体验。它广泛用于游戏开发、数据可视化、教育应用、虚拟旅游等各种领域。
+
+#### 4、ECharts
+Apache ECharts（ECharts）是一个免费、强大的图表和可视化库，提供了向商业产品中轻松添加直观、交互式和高度可定制的图表的简便方法。它是用纯JavaScript编写的，基于zrender，这是一个全新的轻量级画布库。
+
+### 布局计算与渲染分离
+支持力导向布局的图可视化 JavaScript 库有许多，但在实践过程中发现，在 尝试使用这些库加载大规模网络数据时，页面十分卡顿，几乎崩溃，甚至造成浏 览器卡死。力导向图的高时间复杂度难辞其咎。在面对大规模网络时，以单线程 工作的浏览器页面无法兼顾力导向算法的迭代和对每一次迭代结果的实时渲染。
+
+Ngraph 是课程可视化方案中最重要的工具，其开发者是 Andrei Kashcha (https://github.com/anvaka)。该开发者的另一个开源项目 pm 基于 Ngraph 对若干 个知名包管理器的所有包的依赖关系网络进行了可视化。pm 采取的策略是将计 算与渲染分离:提前计算网络的力导向布局并写入到二进制文件，前端直接读取 布局文件进行渲染。
+
+![渲染与计算分离](https://cdn.nlark.com/yuque/0/2023/png/21625412/1696561602532-66a5493f-c06e-4779-9fe2-96ec8c859b4b.png?x-oss-process=image%2Fresize%2Cw_1500%2Climit_0)
+
+## 四、作品展示
+我们的作品名为“开源星系”，您可以通过以下方式访问：
+
+- 在线地址：[http://tangyenan.cn](http://tangyenan.cn)
+- 视频演示：[https://www.bilibili.com/video/BV1Pm4y1G7wg](https://www.bilibili.com/video/BV1Pm4y1G7wg)
+
+![demo](https://cdn.nlark.com/yuque/0/2023/gif/21625412/1696560496358-7da1a500-2677-4da0-9eec-fd99aeee1a83.gif)
+
+如动图所示，“开源星系”中的黑色背景象征着开源宇宙，而代表项目和开发者的结点则是这个宇宙中的繁星。其中，蓝色结点代表项目（仓库），黄色结点代表开发者。一个开发者在一个仓库中有过活跃事件，那么就形成了一条“开发者->仓库”有向边。
+
+用户可以通过鼠标和键盘在“开源星系”中自由探索，操作方式如图中左侧的“开源星系航行指南”所示：
 
 |    |    |    |   |
 |---:|:---|---:|---|
-| `W`  | Move forward  | `Up` |Rotate up|
-| `S`  | Move backward  | `Down`  |Rotate down |
-| `A`  | Move left  |`Left`|Rotate left|
-| `D`  | Move right  |`Right` | Rotate right|
-| `Q`  | Roll right  |`R` | Fly up|
-| `E`  | Roll left  |`F` | Fly down|
-| `L`  | Toggle links  | `Space` | Toggle steering |
-| `Shift`  | Fly faster  |  |  |
+| `W`  | 前进 | `Up` | 向上旋转 |
+| `S`  | 后退 | `Down` | 向下旋转 |
+| `A`  | 左移 |`Left`| 向左旋转 |
+| `D`  | 右移 |`Right` | 向右旋转 |
+| `Q`  | 右翻 |`R` | 上移 |
+| `E`  | 左翻 |`F` | 下移|
+| `L`  | 显/隐 边 | `Shift` | 加速 |
+| `Space`  | 开/关 领航模式  |  |  |
 
-![OpenGalaxy3D](https://user-images.githubusercontent.com/32434520/220118178-42017202-53a3-40ac-9f6c-96e83f4843ac.gif)
+可以通过搜索和点击的方式聚焦结点。当某个结点被聚焦后，右侧会弹出结点详情面板。详情面板展示了项目或开发者的“项目协作网络”、“开发者协作网络”、“项目贡献者活跃度滚榜”（仅项目有）、“关联结点列表”。其中，“项目贡献者活跃度滚榜”还支持互动。
 
-# Contributing
+通过自由探索和结点聚焦，我们既可以在宏观视角下发现令人瞩目的星系，又能在微观视角下洞察每一颗星星。有趣又有料！
 
-There are many ways in which you can participate in this project, for example:
-
-- Find an issue to join
-- Submit bugs and feature requests by issues
-- Help us fix typo
-- Translation
-- ...
-
-
-# License
-
-Copyright (c) 2021 X-lab2017.
-
-Licensed under the [Apache License Version 2.0.](./LICENSE)
-
-**NOTICE:** Some of OpenGalaxy's code is derived from [anvaka/pm](https://github.com/anvaka/pm) whose copyright and license can be found at the end of [LICENSE](./LICENSE) file.
+## 五、如何开发
+1. 克隆仓库并进入项目目录
+2. 确保node版本为 14
+3. yarn install
+4. yarn start

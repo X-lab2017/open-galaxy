@@ -8,6 +8,7 @@
   "COUNT_FOR_SEARCH_MATCHES": "共有 <strong>{count}</strong><span> 个匹配项",
   "RELATED_PROJECT": "关联项目",
   "RELATED_DEVELOPER": "关联开发者",
+  "CONTRIBUTOR_ACTIVITY_RACING_BAR": "贡献者活跃度滚榜",
 
   "HELP_TITLE": "开源星系航行指南",
   "HELP_MOUSE_WHEEL": "鼠标滚轮",
