@@ -1,12 +1,12 @@
 import React from "react";
 import { findDOMNode } from "react-dom";
 import HoverInfo from "./hoverInfo.jsx";
-import { NodeDetails } from "./NodeDetails/index.jsx";
+import { NodeDetails } from "./NodeDetails";
 
 import SteeringIndicator from "./steeringIndicator.jsx";
-import { Search } from "./Search/index.jsx";
+import { Search } from "./Search";
 import NoWebGL from "./noWebgl.jsx";
-import { NavigationHelper } from "./NavigationHelper/index.jsx";
+import { NavigationHelper } from "./NavigationHelper";
 
 import createNativeRenderer from "./native/renderer.js";
 import createKeyboardBindings from "./native/sceneKeyboardBinding.js";

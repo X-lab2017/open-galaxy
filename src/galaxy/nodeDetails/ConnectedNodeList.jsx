@@ -1,5 +1,5 @@
 import scene from '../store/scene.js';
-import { NodeList } from '../../components/NodeList/index.jsx';
+import { NodeList } from '../../components/NodeList';
 import isRepoName from '../utils/isRepoName.js';
 
 import React from 'react';

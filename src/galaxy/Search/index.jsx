@@ -1,6 +1,6 @@
 import scene from '../store/scene.js'
 import clientRuntime from '../runtime/clientRuntime.js';
-import { NodeList } from '../../components/NodeList/index.jsx';
+import { NodeList } from '../../components/NodeList';
 
 import React, { useRef, useState } from 'react';
 import intl from 'react-intl-universal';

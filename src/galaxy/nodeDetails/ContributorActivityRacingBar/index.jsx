@@ -1,8 +1,8 @@
-import RacingBar from './RacingBar';
-import { PlayerButton } from './PlayerButton';
-import { SpeedController } from './SpeedController';
+import RacingBar from './RacingBar.jsx';
+import { PlayerButton } from './PlayerButton.jsx';
+import { SpeedController } from './SpeedController.jsx';
 import request from "../../service/request.js";
-import { getMonthlyData } from './data';
+import { getMonthlyData } from './data.js';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Space } from 'antd';

@@ -1,5 +1,5 @@
 import appEvents from '../service/appEvents.js';
-import { DrawerWithHandle } from '../../components/DrawerWithHandle/index.jsx';
+import { DrawerWithHandle } from '../../components/DrawerWithHandle';
 
 import './index.less';
 

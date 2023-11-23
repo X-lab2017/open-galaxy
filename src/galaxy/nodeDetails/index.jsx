@@ -3,10 +3,10 @@ import scene from '../store/scene.js';
 import { Header } from './Header.jsx';
 import { ConnectedNodeList } from './ConnectedNodeList.jsx';
 import getBaseNodeViewModel from '../store/baseNodeViewModel.js';
-import { DrawerWithHandle } from '../../components/DrawerWithHandle/index.jsx';
-import { HorizontalDivider } from '../../components/Divider/index.jsx';
-import { TwoNetworks } from './TwoNetworks/index.jsx';
-import { ContributorActivityRacingBar } from './ContributorActivityRacingBar/index.jsx';
+import { DrawerWithHandle } from '../../components/DrawerWithHandle';
+import { HorizontalDivider } from '../../components/Divider';
+import { TwoNetworks } from './TwoNetworks';
+import { ContributorActivityRacingBar } from './ContributorActivityRacingBar';
 import isRepoName from '../utils/isRepoName.js';
 
 import './index.less';
